@@ -1,0 +1,2 @@
+class SavedConcertsController < ApplicationController
+end
