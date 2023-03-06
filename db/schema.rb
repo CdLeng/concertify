@@ -10,9 +10,62 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_05_160044) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_06_190225) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "artist_genres", force: :cascade do |t|
+    t.bigint "artist_id", null: false
+    t.bigint "genre_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_artist_genres_on_artist_id"
+    t.index ["genre_id"], name: "index_artist_genres_on_genre_id"
+  end
+
+  create_table "artists", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "concerts", force: :cascade do |t|
+    t.string "location"
+    t.string "description"
+    t.date "date"
+    t.float "price"
+    t.string "ticket_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "artist_id"
+    t.index ["artist_id"], name: "index_concerts_on_artist_id"
+  end
+
+  create_table "followed_artists", force: :cascade do |t|
+    t.bigint "artist_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_followed_artists_on_artist_id"
+    t.index ["user_id"], name: "index_followed_artists_on_user_id"
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "saved_concerts", force: :cascade do |t|
+    t.boolean "attended", default: false
+    t.bigint "concert_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["concert_id"], name: "index_saved_concerts_on_concert_id"
+    t.index ["user_id"], name: "index_saved_concerts_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -28,4 +81,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_05_160044) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "artist_genres", "artists"
+  add_foreign_key "artist_genres", "genres"
+  add_foreign_key "concerts", "artists"
+  add_foreign_key "followed_artists", "artists"
+  add_foreign_key "followed_artists", "users"
+  add_foreign_key "saved_concerts", "concerts"
+  add_foreign_key "saved_concerts", "users"
 end
