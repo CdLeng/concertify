@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_06_184214) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_06_184848) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,6 +38,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_184214) do
     t.string "ticket_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "artist_id"
+    t.index ["artist_id"], name: "index_concerts_on_artist_id"
   end
 
   create_table "followed_artists", force: :cascade do |t|
@@ -81,6 +83,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_184214) do
 
   add_foreign_key "artist_genres", "artists"
   add_foreign_key "artist_genres", "genres"
+  add_foreign_key "concerts", "artists"
   add_foreign_key "followed_artists", "artists"
   add_foreign_key "followed_artists", "users"
   add_foreign_key "saved_concerts", "concerts"
