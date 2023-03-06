@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_06_184848) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_06_190225) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -58,7 +58,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_184848) do
   end
 
   create_table "saved_concerts", force: :cascade do |t|
-    t.boolean "attended"
+    t.boolean "attended", default: false
     t.bigint "concert_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
