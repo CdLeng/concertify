@@ -5,4 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :email, uniqueness: true
+
+  has_many :saved_concerts
+  has_many :followed_artists
 end
