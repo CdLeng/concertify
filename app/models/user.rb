@@ -8,4 +8,5 @@ class User < ApplicationRecord
 
   has_many :saved_concerts
   has_many :followed_artists
+  validates :name, uniqueness: true
 end
