@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true
 
-  has_many :saved_concerts
-  has_many :followed_artists
+  has_many :saved_concerts, dependent: :destroy
+  has_many :followed_artists, dependent: :destroy
   validates :name, uniqueness: true
 end
