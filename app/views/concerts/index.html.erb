@@ -1,0 +1,18 @@
+
+<div class="container">
+  <h1 class="text-center">All Concerts</h1>
+
+    <% @concerts.each do |concert|   %>
+      <div class="card my-2">
+        <div class="card-body">
+
+          <h2><%= link_to "Concert", concert_path(concert)%> by <%= link_to concert.artist.name, artist_path(concert.artist) %></h2>
+          <p><strong>Description: </strong><%= concert.description %></p>
+          <p><strong>Date: </strong><%= concert.date %></p>
+          <p><strong>Price: </strong><%= concert.price %> euros</p>
+          <%= link_to "Buy ticket", concert.ticket_url, class: "btn btn-info"%>
+        </div>
+      </div>
+    <% end %>
+  <%= link_to "Go back", root_path, class: "btn btn-primary" %>
+</div>
