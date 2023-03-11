@@ -57,6 +57,9 @@ gem "devise"
 # Authentication
 gem "pundit"
 
+# Cloud image storing
+gem "cloudinary"
+
 gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
 gem "simple_form", github: "heartcombo/simple_form"
