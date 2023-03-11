@@ -6,4 +6,7 @@ class ConcertPolicy < ApplicationPolicy
     end
   end
 
+  def show?
+    true
+  end
 end
