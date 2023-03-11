@@ -1,0 +1,15 @@
+<div class="container">
+  <h1 class="text-center"><%= @artist.name%>'s page</h1>
+
+    <% @artist.concerts.each do |concert|   %>
+      <div class="card my-2">
+        <div class="card-body">
+          <p><strong>Concert's location: </strong><%= concert.location %></p>
+          <p><strong>Concert's description: </strong><%= concert.description %></p>
+          <p><strong>Date: </strong><%= concert.date %></p>
+            <%= link_to "See more", concert_path(concert), class: "btn btn-info" %>
+        </div>
+      </div>
+    <% end %>
+  <%= link_to "Go back", root_path, class: "btn btn-primary" %>
+</div>
