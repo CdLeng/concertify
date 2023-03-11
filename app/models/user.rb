@@ -4,9 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :email, uniqueness: true
+  has_one_attached :photo
+
+  validates :email, uniqueness: true, presence: true
+  validates :name, uniqueness: true, presence: true
 
   has_many :saved_concerts, dependent: :destroy
   has_many :followed_artists, dependent: :destroy
-  validates :name, uniqueness: true
 end
