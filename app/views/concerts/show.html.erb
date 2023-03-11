@@ -4,5 +4,8 @@
   <p><strong>Description: </strong><%= concert.description %></p>
   <p><strong>Date: </strong><%= concert.date %></p>
   <p><strong>Price: </strong><%= concert.price %> euros</p>
+
   <%= link_to "Buy ticket", concert.ticket_url, class: "btn btn-info"%>
+
+  <%= link_to "Save this concert", save_this_concert_path(concert) %>
 </div>
