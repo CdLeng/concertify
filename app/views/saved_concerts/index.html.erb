@@ -1,0 +1,12 @@
+<div class="container">
+
+  <% @saved_concerts.each do |c| %>
+    <div class="card my-2">
+      <div class="card-body">
+        <strong><%= c.concert.artist.name %></strong>
+        <%= c.concert.location %>
+      </div>
+    </div>
+  <% end %>
+
+</div>
