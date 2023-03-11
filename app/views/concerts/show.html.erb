@@ -1,0 +1,8 @@
+<div class="container">
+  <h2><%= link_to "Concert", concert_path(concert)%> by <%= link_to concert.artist.name, artist_path(concert.artist) %></h2>
+  <p><strong>Location: </strong><%= @concert.location %></p>
+  <p><strong>Description: </strong><%= concert.description %></p>
+  <p><strong>Date: </strong><%= concert.date %></p>
+  <p><strong>Price: </strong><%= concert.price %> euros</p>
+  <%= link_to "Buy ticket", concert.ticket_url, class: "btn btn-info"%>
+</div>
