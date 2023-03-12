@@ -10,4 +10,4 @@
   <%# <%= link_to "Save this concert", save_this_concert_path, method: :post %>
 </div>
 
-<%= button_to "Save this concert", action: "create", :concert_id => @concert.id, :controller => "saved_concerts", method: :post %>
+<%= button_to "Save this concert", {action: "create", :concert_id => @concert.id, :controller => "saved_concerts", method: :post}, {class: "btn btn-primary"} %>
