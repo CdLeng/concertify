@@ -13,7 +13,7 @@ class SavedConcertsController < ApplicationController
     if @saved_concert.save!
       redirect_to saved_concerts_path, notice: "This concert was succesfully saved."
     else
-      render "concerts/show", status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 end

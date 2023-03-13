@@ -1,0 +1,13 @@
+<div class="container">
+  <h1 class="text-center">Followed Artists</h1>
+
+    <% @followed_artists.each do |fa|   %>
+      <div class="card my-2">
+        <div class="card-body">
+          <h2><%= "#{fa.artist.name}"%></h2>
+          <p><%= link_to "Click here for more info about #{fa.artist.name}", artist_path(fa.artist)%></p>
+        </div>
+      </div>
+    <% end %>
+  <%= link_to "Go home", root_path, class: "btn btn-primary" %>
+</div>
