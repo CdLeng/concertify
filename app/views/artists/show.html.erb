@@ -1,6 +1,6 @@
 <div class="container">
   <h1 class="text-center"><%= @artist.name%>'s page</h1>
-  <%= button_to "Follow this artist!", action: "create", :artist_id => @artist.id, :controller => "followed_artists", method: :post %>
+  <%= button_to "Follow this artist!", {action: "create", :artist_id => @artist.id, :controller => "followed_artists", method: :post}, {class: "btn btn-primary"} %>
     <% @artist.concerts.each do |concert|   %>
       <div class="card my-2">
         <div class="card-body">

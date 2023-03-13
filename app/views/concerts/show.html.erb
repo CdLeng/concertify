@@ -7,7 +7,5 @@
 
   <%= link_to "Buy ticket", @concert.ticket_url, class: "btn btn-info"%>
 
-  <%# <%= link_to "Save this concert", save_this_concert_path, method: :post %>
+  <%= button_to "Save this concert", {action: "create", :concert_id => @concert.id, :controller => "saved_concerts", method: :post}, {class: "btn btn-primary"} %>
 </div>
-
-<%= button_to "Save this concert", {action: "create", :concert_id => @concert.id, :controller => "saved_concerts", method: :post}, {class: "btn btn-primary"} %>

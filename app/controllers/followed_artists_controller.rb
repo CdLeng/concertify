@@ -13,7 +13,7 @@ class FollowedArtistsController < ApplicationController
     if @followed_artist.save!
       redirect_to followed_artists_path, notice: "This artist was added to favourites."
     else
-      render "artists/show", status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 end
