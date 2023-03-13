@@ -3,7 +3,7 @@
   <% @saved_concerts.each do |c| %>
     <div class="card my-2">
       <div class="card-body">
-        <strong><%= c.concert.artist.name %></strong>
+        <strong><%= link_to c.concert.artist.name, concert_path(c.concert) %></strong>
         <%= c.concert.location %>
       </div>
     </div>
