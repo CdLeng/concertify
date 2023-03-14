@@ -6,4 +6,12 @@ class Artist < ApplicationRecord
   has_many :followed_artist, dependent: :destroy
   validates :name, presence: true
   validates :description, length: { maximum: 5000 }
+
+  include PgSearch::Model
+
+  pg_search_scope :search_by_artist,
+    against: [ :name, :description ],
+    using: {
+      tsearch: { prefix: true }
+    }
 end
