@@ -1,7 +1,11 @@
 class ArtistsController < ApplicationController
+
   def index
-    @artists = Artist.all
-    @artists = policy_scope(Artist)
+    if params[:query].present?
+      @artists = policy_scope(Artist).search_by_artist(params[:query])
+    else
+      @artists = policy_scope(Artist).all
+    end
   end
 
   def show
