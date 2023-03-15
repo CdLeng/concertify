@@ -1,14 +1,46 @@
 
-<div class="container">
-  <h1 class="text-center">All Concerts</h1>
+<div class="layout-container">
 
+  <div class="banner-one">
+    <h1 class="text-center">Find your concert!</h1>
+    <%= form_with url: artists_path, method: :get, class: "d-flex search-form-border" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control search-input-dark",
+        placeholder: "Find an artist"
+      %>
+      <%= submit_tag "Search", class: "search-btn" %>
+    <% end %>
+  </div>
+
+
+  <div class="card-concert-container">
     <% @concerts.each do |concert|   %>
-      <div class="card my-2">
+
+      <div class="card-concert">
+        <div class="card-img">
+          <%# <img src="https://www.rollingstone.com/wp-content/uploads/2023/02/watch-the-weeknd-hbo-concert-free.jpg" alt="concert image"> %>
+
+          <img src="https://media.istockphoto.com/id/1193274679/photo/excited-crowd-on-a-rock-concert.jpg?s=612x612&w=0&k=20&c=330XDxllhunHf5dt_IwMO2yxPBjXb5j_WMkf_0oWBmU=" alt="concert image">
+        </div>
         <div class="card-body">
-          <h2><%= link_to "Concert", concert_path(concert)%> by <%= link_to concert.artist.name, artist_path(concert.artist) %></h2>
-          <p><strong>Date: </strong><%= concert.date %></p>
+          <div class="d-flex justify-content-between align-items-center">
+            <p class="card-header mb-2"><%= link_to concert.artist.name, artist_path(concert.artist) %></p>
+            <p class="card-date"><strong></strong><%= concert.date %></p>
+          </div>
+          <p class="card-description"><strong></strong><%= concert.description %></p>
+          <div class="d-flex justify-content-center align-items-center">
+            <button class="btn-accent"><%= link_to "See more", concert_path(concert)%></button>
+          </div>
         </div>
       </div>
+
+
+
+
     <% end %>
-  <%= link_to "Go back", root_path, class: "btn btn-primary" %>
+  </div>
+  <div>
+    <%= link_to "Go back", root_path, class: "btn btn-info my-5" %>
+  </div>
 </div>

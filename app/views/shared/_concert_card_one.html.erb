@@ -1,0 +1,15 @@
+
+
+
+
+
+
+
+
+
+      <div class="concert-card">
+        <div class="card-body">
+          <h2><%= link_to "Concert", concert_path(concert)%> by <%= link_to concert.artist.name, artist_path(concert.artist) %></h2>
+          <p><strong>Date: </strong><%= concert.date %></p>
+        </div>
+      </div>
