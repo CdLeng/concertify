@@ -29,18 +29,23 @@
   h2 > a {
     text-decoration: none;
     color: #39AEA9;
-    color: #a0e9e5;
+    color: #4fccc6;
     font-size: 100px;
     font-weight: bold;
     font-family: 'Anton', sans-serif;
     transition: all ease-in-out 0.3s;
   }
   h2 > a:hover {
-    color: #39AEA9;
+    color: #12ada6;
     text-shadow: 2px 2px 50px rgba(26, 26, 26, 0.226);
   }
   h2 {
     margin-top: 50px;
+    transition: all ease-in-out 0.4s;
+  }
+  h2:hover {
+    transform: scale(1.01);
+
   }
 }
 
