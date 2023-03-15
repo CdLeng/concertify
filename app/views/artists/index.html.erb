@@ -10,4 +10,14 @@
       </div>
     <% end %>
   <%= link_to "Go back", root_path, class: "btn btn-primary" %>
+
+    <% if @results %>
+      <% @results.each do |artist| %>
+        <%= artist["name"] %>
+      <% end %>
+    <% end %>
+
+    <%= @auth_code %>
+    <%= @images %>
+
 </div>
