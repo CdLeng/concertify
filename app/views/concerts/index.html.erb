@@ -2,7 +2,7 @@
 <div class="layout-container">
 
   <div class="banner-one">
-    <h1 class="text-center">Find your concert!</h1>
+    <h1 class="text-center">Find your next concert!</h1>
     <%= form_with url: artists_path, method: :get, class: "d-flex search-form-border" do %>
       <%= text_field_tag :query,
         params[:query],

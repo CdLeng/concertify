@@ -39,6 +39,9 @@
       font-size: 18px;
       margin: 0px;
     }
+    .card-header > a:hover {
+      color: $color-accent;
+    }
 
     .card-date {
       font-size: 14px;
