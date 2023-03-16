@@ -1,0 +1,46 @@
+.search-form-border {
+  border: 2px solid $color-accent;
+  border-radius: 20px;
+  width: 70%;
+  margin: 0px auto;
+  transition: all ease-in-out 0.3s;
+}
+
+.search-form-border:hover {
+  box-shadow: 0px 0px 30px #39aea8d0;
+
+}
+
+.search-input-dark {
+  background-color: $color-darker;
+  border: 0px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  color: white;
+  padding: 5px 20px;
+}
+
+
+.search-input-dark:focus {
+  background-color: $color-darker;
+  color: $color-white;
+  font-weight: bold;
+  border: 0px;
+
+  .search-form-border {
+    box-shadow: 0px 0px 50px $color-accent;
+  }
+}
+
+
+.search-btn {
+    background-color: $color-accent;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border: 0px;
+
+}
