@@ -1,8 +1,48 @@
-<div class="container my-3">
-  <h1 class="text-center">CONCERTIFY</h1>
-  <% if user_signed_in? %>
-    <h3>Welcome <%= current_user.email  %></h3>
-  <% end %>
-  <%= link_to "See all concerts", concerts_path, class: "btn btn-primary" %>
-  <%= link_to "See all artists", artists_path, class: "btn btn-primary" %>
+<div class="home-container">
+  <div class="home-banner">
+    <div class="heading">
+      <h1 class="text-center neon-Text">Find your favourite concerts with...</h1>
+      <% if user_signed_in? %>
+        <h5 class="text-center">Welcome <%= current_user.email  %></h5>
+      <% end %>
+
+      <%# <h1 class="text-center neon-Text concertify">Concertify</h1> %>
+    </div>
+  </div>
+  <div class="second-banner">
+    <h1 class="text-center concertifyy">Concertify</h1>
+      <h1 class="text-center home-subtitle">Checkout these concerts!</h1>
+
+    <div class="home-concerts">
+
+    <% @concerts.each do |concert|   %>
+
+      <div class="card-concert">
+        <div class="card-img">
+          <img src="https://media.istockphoto.com/id/1193274679/photo/excited-crowd-on-a-rock-concert.jpg?s=612x612&w=0&k=20&c=330XDxllhunHf5dt_IwMO2yxPBjXb5j_WMkf_0oWBmU=" alt="concert image">
+          <p class="img-date"><%= concert.date %></p>
+
+        </div>
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center">
+            <div><p class="card-header mb-2"><%= link_to concert.artist.name, artist_path(concert.artist) %></p></div>
+            <div><p><%= button_to "Save", {action: "create", :concert_id => concert.id, :controller => "saved_concerts", method: :post}, {class: "save"} %></p></div>
+          </div>
+          <p class="card-description"><strong></strong><%= concert.location %></p>
+          <div class="d-flex justify-content-center align-items-center">
+            <button class="btn-accent"><%= link_to "See more", concert_path(concert)%></button>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    </div>
+
+    <div class="home-links">
+      <%= link_to "See all concerts", concerts_path, class: "btn btn-ghost" %>
+        <%= link_to "See all artists", artists_path, class: "btn btn-ghost" %>
+
+    </div>
+
+  </div>
+
 </div>
