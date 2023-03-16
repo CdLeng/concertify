@@ -13,11 +13,7 @@
 
     <% if @results %>
       <% @results.each do |artist| %>
-        <%= artist["name"] %>
+        <li><%= artist["name"] %></li>
       <% end %>
     <% end %>
-
-    <%= @auth_code %>
-    <%= @images %>
-
 </div>

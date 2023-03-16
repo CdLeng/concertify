@@ -60,8 +60,8 @@ gem "pundit"
 # Cloud image storing
 gem "cloudinary"
 
-# MusicBrainz gem for finding artists
-gem 'musicbrainz'
+# Gem for HTTP requests
+gem "httparty"
 
 gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
