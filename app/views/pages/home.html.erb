@@ -1,9 +1,15 @@
 <div class="home-container">
   <div class="home-banner">
     <div class="heading">
-      <h1 class="text-center neon-Text">Find your favourite concerts with us</h1>
-
-      <%# <h1 class="text-center neon-Text concertify">Concertify</h1> %>
+      <h1 class="text-center neon-Text">Find your favourite concerts with Concertify</h1>
+      <%= form_with url: artists_path, method: :get, class: "d-flex search-form-border my-5" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control search-input-dark",
+        placeholder: "Search for your favorite artist"
+      %>
+      <%= submit_tag "Search", class: "search-btn" %>
+      <% end %>
     </div>
   </div>
   <div class="second-banner">
