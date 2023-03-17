@@ -2,16 +2,17 @@
   <div class="home-banner">
     <div class="heading">
       <h1 class="text-center neon-Text">Find your favourite concerts with us</h1>
-      <% if user_signed_in? %>
-        <h5 class="text-center welcome">Welcome back <%= current_user.email  %>!</h5>
-      <% end %>
 
       <%# <h1 class="text-center neon-Text concertify">Concertify</h1> %>
     </div>
   </div>
   <div class="second-banner">
     <h1 class="text-center concertifyy">Concertify</h1>
-      <h1 class="text-center home-subtitle">Checkout these concerts!</h1>
+    <% if user_signed_in? %>
+        <h5 class="text-center home-subtitle"><span class="cyan">Welcome back <%= current_user.email  %>!</span> Checkout these concerts...</h5>
+      <% else %>
+      <h1 class="text-center home-subtitle ">Checkout these concerts!</h1>
+      <% end %>
 
     <div class="home-concerts">
 

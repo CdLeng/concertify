@@ -34,12 +34,7 @@
     text-shadow: 1px 1px 20px rgb(17, 17, 17);
 
   }
-  .welcome {
-    font-family: $headers-font;
-    font-size: 14px;
-    color: rgb(98, 186, 197);
 
-  }
 }
 
 .second-banner {
@@ -61,6 +56,10 @@
   }
   .home-subtitle {
     color: whitesmoke;
+    font-size: 28px;
+  }
+  .cyan {
+    color: rgb(98, 186, 197)
   }
 }
 
