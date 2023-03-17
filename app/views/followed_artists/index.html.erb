@@ -1,13 +1,30 @@
-<div class="container">
-  <h1 class="text-center">Followed Artists</h1>
 
-    <% @followed_artists.each do |fa|   %>
-      <div class="card my-2">
-        <div class="card-body">
-          <h2><%= "#{fa.artist.name}"%></h2>
-          <p><%= link_to "Click here for more info about #{fa.artist.name}", artist_path(fa.artist)%></p>
+<div class="layout-container">
+
+  <div class="banner-one">
+    <h1 class="text-center">Your favourite artists <i class="fa-solid fa-heart pink"></i></h1>
+
+  </div>
+
+
+  <div class="card-artist-container">
+    <% @followed_artists.each do |artist|   %>
+      <div class="artist-card">
+        <div class="artist-card-img">
+          <img id="x" src="https://images.unsplash.com/photo-1605722243979-fe0be8158232?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80" alt="artist photo">
         </div>
+        <div class="artist-card-body">
+          <h2><%= link_to "#{artist.artist.name}", artist_path(artist.artist)%></h2>
+          <p><%= artist.artist.description %></p>
+        </div>
+
       </div>
+
+
     <% end %>
-  <%= link_to "Go home", root_path, class: "btn btn-primary" %>
+  </div>
+
+  <div>
+    <%= link_to "Go back", root_path, class: "btn btn-light my-5 rounded" %>
+  </div>
 </div>

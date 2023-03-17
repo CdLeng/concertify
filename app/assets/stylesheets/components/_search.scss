@@ -1,7 +1,8 @@
 .search-form-border {
   border: 2px solid $color-accent;
-  border-radius: 20px;
-  width: 70%;
+  border-radius: 50px;
+  width: 90%;
+  height: 40px;
   margin: 0px auto;
   transition: all ease-in-out 0.3s;
 }
@@ -12,19 +13,24 @@
 }
 
 .search-input-dark {
-  background-color: $color-darker;
+  background-color: transparent;
   border: 0px;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
   color: white;
   padding: 5px 20px;
+  font-family: $headers-font;
+
+}
+
+.search-input-dark::placeholder {
+  color: rgb(227, 226, 226);
 }
 
 
 .search-input-dark:focus {
   background-color: $color-darker;
-  color: $color-white;
-  font-weight: bold;
+  color: white;
   border: 0px;
 
   .search-form-border {
@@ -37,8 +43,8 @@
     background-color: $color-accent;
     color: white;
     font-size: 16px;
-    font-weight: bold;
-    padding: 5px 20px;
+    font-family: $headers-font;
+    padding: 5px 40px;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     border: 0px;
