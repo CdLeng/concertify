@@ -1,7 +1,8 @@
 .search-form-border {
   border: 2px solid $color-accent;
   border-radius: 20px;
-  width: 70%;
+  width: 90%;
+  height: 60px;
   margin: 0px auto;
   transition: all ease-in-out 0.3s;
 }
@@ -20,11 +21,14 @@
   padding: 5px 20px;
 }
 
+.search-input-dark::placeholder {
+  color: rgb(227, 226, 226);
+}
+
 
 .search-input-dark:focus {
   background-color: $color-darker;
-  color: $color-white;
-  font-weight: bold;
+  color: white;
   border: 0px;
 
   .search-form-border {
@@ -37,7 +41,6 @@
     background-color: $color-accent;
     color: white;
     font-size: 16px;
-    font-weight: bold;
     padding: 5px 20px;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;

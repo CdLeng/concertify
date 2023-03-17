@@ -1,1 +1,105 @@
 // Specific CSS for your home-page
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+.home-container {
+  min-height: 100vh;
+  width: 100%;
+  background-color: $color-darker;
+}
+.home-banner {
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  height: 750px;
+  background-image: url("https://images.unsplash.com/photo-1501612780327-45045538702b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80");
+  background-size: cover;
+  background-position: center;
+}
+
+.heading {
+  color: whitesmoke;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h1 {
+    font-family: 'Bebas Neue', cursive;
+    text-shadow: 0px 0px 20px rgb(17, 17, 17);
+    font-size: 50px;
+    text-decoration: underline;
+    text-decoration-color: $color-accent;
+
+  }
+
+  .concertify {
+    color: rgb(25, 156, 173);
+    font-size: 140px;
+    text-shadow: 1px 1px 20px rgb(17, 17, 17);
+
+  }
+
+}
+
+.second-banner {
+  width: 100%;
+  min-height: 170vh;
+  background-color: #0D0D0D;
+  position: relative;
+  padding: 150px;
+  padding-top: 230px;
+
+
+  .home-concerts {
+    width: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 0px;
+    column-gap: 50px;
+  }
+  .home-subtitle {
+    color: whitesmoke;
+    font-size: 28px;
+  }
+  .cyan {
+    color: rgb(98, 186, 197)
+  }
+}
+
+.concertifyy {
+  color: rgb(25, 156, 173);
+  font-size: 200px;
+  text-shadow: 0px 0px 50px rgb(17, 17, 17);
+  font-family: 'Bebas Neue', cursive;
+  position: absolute;
+  top: -120px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  transition: all ease-in-out 0.4s;
+}
+
+.home-links {
+  margin-top: 100px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0px 200px;
+  .btn-ghost {
+    background-color: #0D0D0D;
+    color: $color-accent;
+    border: 1px solid $color-accent;
+    border-radius: 20px;
+    padding: 5px 30px;
+    transition: all ease-in-out 0.25s;
+  }
+  .btn-ghost:hover {
+    background-color: $color-accent;
+    color: #0D0D0D ;
+    box-shadow: 0px 0px 40px rgba(25, 156, 173, 0.438);
+  }
+}
