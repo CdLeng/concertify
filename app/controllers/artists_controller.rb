@@ -25,6 +25,7 @@ class ArtistsController < ApplicationController
     @artist_genres = params["artist"]["genres"].split
     @artist = Artist.find_by(name: @artist_name)
     if @artist
+      authorize @artist
       redirect_to artist_path(@artist)
     else
       @new_artist = Artist.new
