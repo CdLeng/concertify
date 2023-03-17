@@ -1,0 +1,44 @@
+.footer {
+  width: 100%;
+  bottom: 0;
+  background-color: #202020;
+  color: rgb(206, 206, 206);
+  position: relative;
+  font-size: 12px;
+  padding: 100px;
+  font-family: $headers-font;
+}
+
+.footer p {
+  padding: 0;
+  margin: 0;
+  font-size: 14px
+}
+
+.footer a:hover {
+  text-decoration: underline;
+  text-decoration-color: $color-accent;
+}
+
+.footer a {
+  color: white;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-socials i {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: $color-accent;
+}
