@@ -17,13 +17,12 @@
     <div class="home-concerts">
 
     <% @concerts.each do |concert|   %>
-
       <div class="card-concert">
         <div class="card-img">
           <img src="https://media.istockphoto.com/id/1193274679/photo/excited-crowd-on-a-rock-concert.jpg?s=612x612&w=0&k=20&c=330XDxllhunHf5dt_IwMO2yxPBjXb5j_WMkf_0oWBmU=" alt="concert image">
           <p class="img-date"><%= concert.date %></p>
-
         </div>
+
         <div class="card-body">
           <div class="d-flex justify-content-between align-items-center">
             <div><p class="card-header mb-2"><%= link_to concert.artist.name, artist_path(concert.artist) %></p></div>
@@ -37,13 +36,10 @@
       </div>
     <% end %>
     </div>
-
     <div class="home-links">
       <%= link_to "See all concerts", concerts_path, class: "btn btn-ghost" %>
         <%= link_to "See all artists", artists_path, class: "btn btn-ghost" %>
-
     </div>
 
   </div>
-
 </div>
