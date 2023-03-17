@@ -59,6 +59,14 @@
     color: #0d8d87;
   }
 
+  .artist-card-title {
+    border: none;
+    background-color: transparent;
+    color: $color-accent;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
 }
 .artist-card-btn {
   position: absolute;

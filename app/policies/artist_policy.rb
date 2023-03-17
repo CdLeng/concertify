@@ -4,9 +4,12 @@ class ArtistPolicy < ApplicationPolicy
     def resolve
       scope.all
     end
-
   end
   def show?
     true
+  end
+
+  def create?
+    user
   end
 end

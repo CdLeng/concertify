@@ -26,7 +26,17 @@
             <% end %>
           </div>
           <div class="artist-card-body">
-            <h2><%= link_to artist["name"], create_artist(artist), method: :post %></h2>
+            <%= simple_form_for @artist do |f| %>
+              <%= f.hidden_field :name, value: artist["name"]  %>
+              <% if artist["images"][0].present? %>
+                <%= f.hidden_field :image_url, value: artist["images"][0]["url"] %>
+              <% end %>
+              <% if artist["genres"].present? %>
+                <%= f.hidden_field :genres, value: artist["genres"]%>
+              <% end %>
+              <%= f.submit artist["name"], class: "artist-card-title"%>
+            <% end  %>
+            <h2><%#artist["name"] %></h2>
             <div class="artist-card-btn">
             </div>
           </div>

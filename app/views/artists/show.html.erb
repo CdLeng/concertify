@@ -1,5 +1,16 @@
 <div class="container">
   <h1 class="text-center"><%= @artist.name%>'s page</h1>
+  <% if @artist.image_url %>
+    <img src="<%= @artist.image_url %>" alt="Artist image">
+  <% end %>
+  <h3>Genres</h3>
+  <% @artist.genres.each do |genre| %>
+    <li><%= genre.name %></li>
+  <% end %>
+  <h3>About <%= @artist.name %></h3>
+  <% if @artist.description %>
+    <p><%= @artist.description %></p>
+  <% end %>
   <%= button_to "Follow this artist!", {action: "create", :artist_id => @artist.id, :controller => "followed_artists", method: :post}, {class: "btn btn-primary"} %>
     <% @artist.concerts.each do |concert|   %>
       <div class="card my-2">
