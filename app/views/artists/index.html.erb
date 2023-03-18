@@ -27,6 +27,7 @@
           </div>
           <div class="artist-card-body">
             <%= simple_form_for @artist do |f| %>
+              <%= f.hidden_field :spotify_id, value: artist["id"]  %>
               <%= f.hidden_field :name, value: artist["name"]  %>
               <% if artist["images"][0].present? %>
                 <%= f.hidden_field :image_url, value: artist["images"][0]["url"] %>
