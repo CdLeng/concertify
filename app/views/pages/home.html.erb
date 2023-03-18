@@ -16,7 +16,9 @@
     <h1 class="text-center concertifyy">Concertify</h1>
     <%= first_name = current_user.name.split[0] %>
     <% if user_signed_in? %>
-        <h5 class="text-center home-subtitle"><span class="cyan">Welcome back <%= first_name.capitalize  %>!</span> Checkout these concerts...</h5>
+        <h5 class="text-center home-subtitle"><span class="cyan">Welcome back <%= first_name.capitalize  %>!</span></h5>
+        <h6 class="text-center home-subtitle"><span class="cyan">Checkout these concerts!</span></h6>
+
       <% else %>
       <h1 class="text-center home-subtitle ">Checkout these concerts!</h1>
       <% end %>
