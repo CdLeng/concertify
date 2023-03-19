@@ -11,40 +11,5 @@
       %>
       <%= submit_tag "Search", class: "search-btn" %>
     <% end %>
-  </div>
-
-
-  <div class="card-artist-container">
-    <% if @results %>
-        <% @results.each do |artist| %>
-        <div class="artist-card">
-          <div class="artist-card-img">
-            <% if artist["images"][0].present? %>
-              <img id="x" src="<%= artist["images"][0]["url"] %>" alt="artist photo">
-            <% else %>
-              <img id="x" src="https://images.unsplash.com/photo-1605722243979-fe0be8158232?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80" alt="artist photo">
-            <% end %>
-          </div>
-          <div class="artist-card-body">
-            <%= simple_form_for @artist do |f| %>
-              <%= f.hidden_field :name, value: artist["name"]  %>
-              <% if artist["images"][0].present? %>
-                <%= f.hidden_field :image_url, value: artist["images"][0]["url"] %>
-              <% end %>
-              <% if artist["genres"].present? %>
-                <%= f.hidden_field :genres, value: artist["genres"]%>
-              <% end %>
-              <%= f.submit artist["name"], class: "artist-card-title"%>
-            <% end  %>
-            <h2><%#artist["name"] %></h2>
-            <div class="artist-card-btn">
-            </div>
-          </div>
-        </div>
-        <% end %>
-      <% end %>
-  </div>
-  <div>
-    <%= link_to "Go back", root_path, class: "btn btn-light my-5 rounded" %>
-  </div>
+  <%= link_to "Go back", root_path, class: "btn btn-primary" %>
 </div>
