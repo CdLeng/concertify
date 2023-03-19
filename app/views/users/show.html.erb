@@ -10,3 +10,8 @@
 <p>For all your saved concerts, click <%= link_to "here", saved_concerts_path %></p>
 
 <button class="btn-accent"><%= link_to "Edit my Profile", edit_user_registration_path%></button>
+
+
+<h3>Cancel my account</h3>
+
+<div>Unhappy? <%= button_to "Cancel my account", cancel_user_registration_path, data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
