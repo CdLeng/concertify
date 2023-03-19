@@ -16,6 +16,10 @@
 
   <div class="card-artist-container">
     <% if @results %>
+      <p class="text-light"><%= @results.count %> Artists found</p>
+      <% if @results.empty? %>
+        <p class="text-light">Unfortunately no artists could be found. Please try again.</p>
+      <% else %>
         <% @results.each do |artist| %>
         <div class="artist-card">
           <div class="artist-card-img">
@@ -37,13 +41,13 @@
               <% end %>
               <%= f.submit artist["name"], class: "artist-card-title"%>
             <% end  %>
-            <h2><%#artist["name"] %></h2>
             <div class="artist-card-btn">
             </div>
           </div>
         </div>
         <% end %>
       <% end %>
+    <% end %>
   </div>
   <div>
     <%= link_to "Go back", root_path, class: "btn btn-light my-5 rounded" %>

@@ -2,8 +2,6 @@ class ArtistsController < ApplicationController
   require 'open-uri'
   include HTTParty
 
-  helper_method :create_artist
-
   def index
     @artist = Artist.new
     if params[:query].present?
@@ -67,8 +65,8 @@ class ArtistsController < ApplicationController
   end
 
   def artist_description(artist_name)
-    artist_url = "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=#{artist_name}&api_key=#{ENV["LASTFM_APIKEY"]}&format=json"
-    artist_url = URI.escape(artist_url) unless artists_url.ascii_only?
+    url_encoded_string = CGI::escape(artist_name)
+    artist_url = "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=#{url_encoded_string}&api_key=#{ENV["LASTFM_APIKEY"]}&format=json"
     serialized = URI.parse(artist_url).read
     user = JSON.parse(serialized)
     @artist_description = user["artist"]["bio"]["summary"]
