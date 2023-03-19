@@ -1,0 +1,9 @@
+<!-- app/views/users/show.html.erb -->
+<% first_name = current_user.name.split[0] %>
+
+<h1><%= first_name.capitalize %>'s Profile</h1>
+<p>Name: <%= @user.name %></p>
+<p>Email: <%= @user.email %></p>
+<p>Address: <%= @user.address %></p>
+
+<button class="btn-accent"><%= link_to "Edit my Profile", edit_user_registration_path%></button>
