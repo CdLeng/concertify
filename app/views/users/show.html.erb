@@ -6,4 +6,7 @@
 <p>Email: <%= @user.email %></p>
 <p>Address: <%= @user.address %></p>
 
+<p>To see your favourite artsits, click <%= link_to "here", followed_artists_path %></p>
+<p>For all your saved concerts, click <%= link_to "here", saved_concerts_path %></p>
+
 <button class="btn-accent"><%= link_to "Edit my Profile", edit_user_registration_path%></button>
