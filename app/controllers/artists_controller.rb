@@ -74,16 +74,16 @@ class ArtistsController < ApplicationController
 
   def return_artists(query)
     encoded_query = CGI::escape(query)
-    @auth_url = 'https://open.spotify.com/get_access_token?reason=transport&productType=web_player'
-    @auth_response = URI.parse(@auth_url).read
-    @auth_json = JSON.parse(@auth_response)
-    @auth_code = @auth_json["accessToken"]
-    @headers = {
+    auth_url = 'https://open.spotify.com/get_access_token?reason=transport&productType=web_player'
+    auth_response = URI.parse(auth_url).read
+    auth_json = JSON.parse(auth_response)
+    auth_code = auth_json["accessToken"]
+    headers = {
       "Accept" => "application/json",
       "Content-Type" => "application/json",
-      "Authorization" => "Bearer #{@auth_code}"
+      "Authorization" => "Bearer #{auth_code}"
     }
-    @response = HTTParty.get("https://api.spotify.com/v1/search?q=#{encoded_query}&type=artist&limit=35", headers: @headers)
-    @results = @response["artists"]["items"]
+    response = HTTParty.get("https://api.spotify.com/v1/search?q=#{encoded_query}&type=artist&limit=35", headers: headers)
+    @results = response["artists"]["items"]
   end
 end
