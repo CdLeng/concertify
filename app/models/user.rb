@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true, presence: true
   validates :name, uniqueness: true, presence: true
+  validates :country_code, presence: true
 
   has_many :saved_concerts, dependent: :destroy
   has_many :followed_artists, dependent: :destroy

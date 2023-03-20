@@ -5,4 +5,5 @@ class Concert < ApplicationRecord
   validates :date, presence: true
   validates :price, numericality: { greater_than: 0 }
   validates :description, length: { maximum: 5000 }
+  validates :attraction_id, uniqueness: true
 end
