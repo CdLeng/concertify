@@ -1,5 +1,5 @@
 
-<div class="layout-container">
+<div class="layout-artists-container">
 
   <div class="banner-one">
     <h1 class="text-center">Who do you want to see?</h1>
@@ -14,12 +14,13 @@
   </div>
 
 
-  <div class="card-artist-container">
+
     <% if @results %>
       <p class="text-light"><%= @results.count %> Artists found</p>
       <% if @results.empty? %>
         <p class="text-light">Unfortunately no artists could be found. Please try again.</p>
       <% else %>
+        <div class="card-artist-container">
         <% @results.each do |artist| %>
         <div class="artist-card">
           <div class="artist-card-img">
