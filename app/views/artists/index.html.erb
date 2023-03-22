@@ -13,17 +13,17 @@
     <% end %>
   </div>
 
-  <div class="card-artist-container">
-    <% if @artists %>
-      <p class="text-light"><%= @artists.count %> Artists found</p>
-      <% if @artists.empty? %>
+   <div class="card-artist-container">
+    <% if @results %>
+      <p class="text-light"><%= @results.count %> Artists found</p>
+      <% if @results.empty? %>
         <p class="text-light">Unfortunately no artists could be found. Please try again.</p>
       <% else %>
-        <% @artists.each do |artist| %>
+        <% @results.each do |artist| %>
         <div class="artist-card">
           <div class="artist-card-img">
-            <% if artist["image_url"].present? %>
-              <img id="x" src="<%= artist["image_url"] %>" alt="artist photo">
+            <% if artist["images"][0].present? %>
+              <img id="x" src="<%= artist["images"][0]["url"] %>" alt="artist photo">
             <% else %>
               <img id="x" src="https://images.unsplash.com/photo-1605722243979-fe0be8158232?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80" alt="artist photo">
             <% end %>
@@ -32,8 +32,8 @@
             <%= simple_form_for @artist do |f| %>
               <%= f.hidden_field :spotify_id, value: artist["id"]  %>
               <%= f.hidden_field :name, value: artist["name"]  %>
-              <% if artist["image_url"].present? %>
-                <%= f.hidden_field :image_url, value: artist["image_url"] %>
+              <% if artist["images"][0].present? %>
+                <%= f.hidden_field :image_url, value: artist["images"][0]["url"] %>
               <% end %>
               <% if artist["genres"].present? %>
                 <%= f.hidden_field :genres, value: artist["genres"]%>
