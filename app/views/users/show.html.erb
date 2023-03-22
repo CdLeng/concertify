@@ -78,15 +78,6 @@
     </div>
 
 
-    <div class="genres-component">
-      <p class="title-1" >Liked Genres</p>
-      <div class="sub-container">
-        <% @genres.each do |genre|   %>
-          <%# <div class="artist-card-profile"> %>
-            <p><%= genre.name %></p>
-        <% end %>
-      </div>
-    </div>
 
     <div class="genres-component">
       <p class="title-1" >Favourite Genres</p>
@@ -100,7 +91,7 @@
         <% end %>
         <% c = b.sort_by {|k,v| v}.reverse.take(10) %>
         <% c.take(10).each do |k, v| %>
-          <%= "#{k} (#{v})"%>
+          <p><%= "#{k} (#{v})"%></p>
         <%  end  %>
       </div>
     </div>
