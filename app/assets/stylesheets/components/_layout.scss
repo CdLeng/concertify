@@ -24,6 +24,14 @@
   }
 }
 
+.banner-show {
+  width: 100%;
+  font-family: $headers-font;
+  color: $color-white;
+  font-weight: bold;
+  font-size: 30px;
+  padding: 50px;
+}
 
 // Buttons
 //  //  Button accent
@@ -43,6 +51,59 @@
   }
 }
 .btn-accent:hover {
+  font-weight: bold;
+  box-shadow: 0px 0px 15px #39aea88a;
+}
+.pink {
+  color: lightcoral;
+}
+.yellow {
+  color: rgb(255, 205, 69);
+}
+
+.btn-accent-show {
+  background-color: $color-accent;
+  width: 1100px;
+  padding: 10px;
+  margin: 25px;
+  border-radius: 8px;
+  border: 0px;
+  transition: all ease-in-out 0.3s;
+  color: $color-white;
+  text-decoration: none;
+  text-align: center;
+  font-size: 16px;
+  font-family: $headers-font;
+  display: block;
+}
+.btn-accent-show:hover {
+  font-weight: bold;
+  box-shadow: 0px 0px 15px #39aea88a;
+}
+.pink {
+  color: lightcoral;
+}
+.yellow {
+  color: rgb(255, 205, 69);
+}
+
+.btn-show-back {
+  background-color: $color-accent;
+  width: 150px;
+  padding: 10px;
+  margin: 25px;
+  margin-bottom: 25px;
+  border-radius: 8px;
+  border: 0px;
+  transition: all ease-in-out 0.3s;
+  color: $color-white;
+  text-decoration: none;
+  text-align: center;
+  font-size: 16px;
+  font-family: $headers-font;
+  display: block;
+}
+.btn-accent-show:hover {
   font-weight: bold;
   box-shadow: 0px 0px 15px #39aea88a;
 }

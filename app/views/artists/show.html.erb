@@ -1,26 +1,54 @@
-<div class="container">
-  <h1 class="text-center"><%= @artist.name%>'s page</h1>
-  <% if @artist.image_url %>
-    <img src="<%= @artist.image_url %>" alt="Artist image">
+<div class="layout-container">
+
+<div class="banner-show">
+  <h1 class="show-artist-title"><%= @artist.name%></h1>
+</div>
+
+
+<div class="artist-img-banner">
+  <% if @artist["image_url"].present? %>
+    <img id="x" src="<%= artist["image_url"] %>" alt="artist photo">
+  <% else %>
+    <img id="x" src="https://images.unsplash.com/photo-1605722243979-fe0be8158232?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80" alt="artist photo">
   <% end %>
-  <h3>Genres</h3>
-  <% @artist.genres.each do |genre| %>
-    <li><%= genre.name %></li>
-  <% end %>
-  <h3>About <%= @artist.name %></h3>
-  <% if @artist.description %>
-    <p><%= @artist.description %></p>
-  <% end %>
-  <%= button_to "Follow this artist!", {action: "create", :artist_id => @artist.id, :controller => "followed_artists", method: :post}, {class: "btn btn-primary"} %>
+</div>
+
+<div class="artist-card-show-container">
+  <div class="artist-card-show">
+    <div class="show-card-title">
+      <h3 class="text-center">Genres</h3>
+    </div>
+    <div class="artist-card-show-text">
+      <% @artist.genres.each do |genre| %>
+        <li class="artist-genre-list"><%= genre.name %></li>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="artist-card-show">
+    <div class="show-card-title">
+      <h3 class="text-center">About <%= @artist.name %></h3>
+    </div>
+    <div class="artist-card-show-text">
+      <% if @artist.description %>
+        <p><%= @artist.description %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<%= button_to "Follow this artist!", {action: "create", :artist_id => @artist.id, :controller => "followed_artists", method: :post}, {class: "btn-accent-show"} %>
+
     <% @artist.concerts.each do |concert|   %>
-      <div class="card my-2">
+      <div class="artist-card-event-show">
         <div class="card-body">
-          <p><strong>Concert's location: </strong><%= concert.location %></p>
-          <p><strong>Concert's description: </strong><%= concert.description %></p>
-          <p><strong>Date: </strong><%= concert.date %></p>
+          <p class="event-title-show">Concert location:</p><p><%= concert.location %></p>
+          <p class="event-title-show">Additional information:</p><p><%= concert.description %></p>
+          <p class="event-title-show">Date:</p><p><%= concert.date %></p>
           <%= link_to "See more", concert_path(concert), class: "btn btn-info" %>
         </div>
       </div>
     <% end %>
-  <%= link_to "Go back", root_path, class: "btn btn-primary" %>
+  <%= link_to "Go back", root_path, class: "btn-show-back" %>
 </div>

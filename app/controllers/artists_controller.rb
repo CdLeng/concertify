@@ -12,6 +12,7 @@ class ArtistsController < ApplicationController
     else
       @artists = policy_scope(Artist).all
     end
+    puts @artists
   end
 
   def show
