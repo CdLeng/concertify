@@ -15,6 +15,10 @@
 
   <div class="card-artist-container">
     <% if @artists %>
+      <p class="text-light"><%= @artists.count %> Artists found</p>
+      <% if @artists.empty? %>
+        <p class="text-light">Unfortunately no artists could be found. Please try again.</p>
+      <% else %>
         <% @artists.each do |artist| %>
         <div class="artist-card">
           <div class="artist-card-img">
@@ -26,6 +30,7 @@
           </div>
           <div class="artist-card-body">
             <%= simple_form_for @artist do |f| %>
+              <%= f.hidden_field :spotify_id, value: artist["id"]  %>
               <%= f.hidden_field :name, value: artist["name"]  %>
               <% if artist["image_url"].present? %>
                 <%= f.hidden_field :image_url, value: artist["image_url"] %>
@@ -35,13 +40,13 @@
               <% end %>
               <%= f.submit artist["name"], class: "artist-card-title"%>
             <% end  %>
-            <h2><%#artist["name"] %></h2>
             <div class="artist-card-btn">
             </div>
           </div>
         </div>
         <% end %>
       <% end %>
+    <% end %>
   </div>
   <div>
     <%= link_to "Go back", root_path, class: "btn btn-light my-5 rounded" %>

@@ -1,0 +1,18 @@
+<!-- app/views/users/show.html.erb -->
+<div class="container py-5">
+  <% first_name = current_user.name.split[0] %>
+
+  <h1><%= first_name.capitalize %>'s Profile</h1>
+  <p><strong>Name:</strong> <%= @user.name %></p>
+  <p><strong>Email:</strong> <%= @user.email %></p>
+  <p><strong>Address:</strong> <%= @user.address %></p>
+
+  <p>To see your favourite artists, click <%= link_to "here", followed_artists_path %></p>
+  <p>For all your saved concerts, click <%= link_to "here", saved_concerts_path %></p>
+
+  <button class="btn-accent"><%= link_to "Edit my Profile", edit_user_registration_path%></button>
+
+  <h3>Cancel my account</h3>
+
+  <div>Unhappy? <%= button_to "Cancel my account", cancel_user_registration_path, data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
+</div>
