@@ -14,13 +14,13 @@
   </div>
 
     <% if @results %>
-      <p class="text-light"><%= @results.count %> Artists found</p>
+      <p class="text-light"><%= @results.first(8).count %> Artists found</p>
       <% if @results.empty? %>
         <p class="text-light">Unfortunately no artists could be found. Please try again.</p>
       <% else %>
 
         <div class="card-artist-container">
-          <% @results.each do |artist| %>
+          <% @results.first(8).each do |artist| %>
 
           <div class="artist-card">
             <div class="artist-card-img">
