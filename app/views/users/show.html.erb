@@ -88,6 +88,23 @@
       </div>
     </div>
 
+    <div class="genres-component">
+      <p class="title-1" >Favourite Genres</p>
+      <div class="sub-container">
+        <% b = Hash.new(0) %>
+        <% @followed_artists.each do |a|   %>
+          <%# <div class="artist-card-profile"> %>
+            <% a.artist.genres.each do |v| %>
+                <% b[v.name] += 1 %>
+            <% end %>
+        <% end %>
+        <% c = b.sort_by {|k,v| v}.reverse.take(10) %>
+        <% c.take(10).each do |k, v| %>
+          <%= "#{k} (#{v})"%>
+        <%  end  %>
+      </div>
+    </div>
+
 
   </div>
 
