@@ -31,14 +31,14 @@
   color: white;
   display: grid;
   grid-template-columns: 300px 1fr;
-  grid-template-rows: 15px 300px 15px 150px 15px 200px;
+  grid-template-rows: 15px 300px 15px 120px 15px 300px;
   grid-template-areas:
-    "user concerts-title"
     "user concerts"
-    "user artists-title"
+    "user concerts"
+    "user artists"
 
     "user artists"
-    "genres-title artists"
+    "genres artists"
 
     "genres artists";
 
@@ -91,14 +91,28 @@
     }
     a:hover {
       background-color: rgb(30, 134, 134);
+      color: white;
     }
 
   }
   .concerts-component {
     grid-area: concerts;
-    padding: 40px;
+    padding: 60px 40px 40px 40px;
     background-color: #202020;
     border-radius: 5px;
+    position: relative;
+
+    .title-1 {
+      position: absolute;
+      top: 15px;
+      color: $color-accent;
+      font-size: 20px;
+
+      a {
+        text-decoration: none;
+        color: $color-accent;
+      }
+    }
 
     h2 {
       font-size: 30px;
@@ -221,7 +235,7 @@
 
   .artists-component {
     grid-area: artists;
-    padding: 50px 50px 50px 10px;
+    padding: 60px 50px 50px 10px;
     background-color: #202020;
     display: flex;
     justify-content: space-evenly;
@@ -229,6 +243,20 @@
     align-items: center;
     border-radius: 5px;
     gap: 50px;
+    position: relative;
+
+    .title-1 {
+      position: absolute;
+      top: 15px;
+      left: 30px;
+      color: $color-accent;
+      font-size: 20px;
+
+      a {
+        text-decoration: none;
+        color: $color-accent;
+      }
+    }
 
 
     .sub-container {
@@ -298,12 +326,26 @@
 
   .genres-component {
     grid-area: genres;
-    padding: 20px;
+    padding: 50px;
     background-color: #202020;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 5px;
+    position: relative;
+
+    .title-1 {
+      position: absolute;
+      top: 15px;
+      left: 30px;
+      color: $color-accent;
+      font-size: 20px;
+
+      a {
+        text-decoration: none;
+        color: $color-accent;
+      }
+    }
 
     .sub-container {
       display: flex;
@@ -321,8 +363,8 @@
       padding: 2px 20px;
       background-color: #161616;
       background-color: transparent;
-      border: 1px solid $color-accent;
-      color: $color-accent;
+      border: 1px solid rgb(156, 156, 156);
+      color: rgb(156, 156, 156);
       border-radius: 20px;
       font-size: 12px;
       }
