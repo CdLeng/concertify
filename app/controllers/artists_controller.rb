@@ -1,6 +1,7 @@
 class ArtistsController < ApplicationController
   require 'open-uri'
   include HTTParty
+  skip_before_action :authenticate_user!, only: [:index, :show, :create]
 
   def index
     @artist = Artist.new
