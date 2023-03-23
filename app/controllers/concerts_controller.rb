@@ -8,6 +8,6 @@ class ConcertsController < ApplicationController
 
   def index
     @concerts = policy_scope(Concert)
-    @concerts = Concert.all
+    @concerts = Concert.all.first(8)
   end
 end
