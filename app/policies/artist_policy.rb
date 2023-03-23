@@ -10,6 +10,10 @@ class ArtistPolicy < ApplicationPolicy
   end
 
   def create?
-    user
+    true
+  end
+
+  def index?
+    true
   end
 end
