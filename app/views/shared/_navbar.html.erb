@@ -24,7 +24,7 @@
               <% if current_user.photo.key %>
                 <%= cl_image_tag current_user.photo.key, height: 40, width: 40, radius: 100, background: "#202020" %>
               <% else %>
-                <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
+                <%= image_tag "default_avatar_icon", class: "avatar" %>
               <% end %>
             </div>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
