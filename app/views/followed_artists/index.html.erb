@@ -11,7 +11,7 @@
     <% @followed_artists.each do |artist|   %>
       <div class="artist-card">
         <div class="artist-card-img">
-          <% if artist.artist.image_url %>
+          <% if artist.artist.image_ur %>
             <img src="<%= artist.artist.image_url %>" alt="Artist image">
           <% else %>
             <img src="https://images.unsplash.com/photo-1605722243979-fe0be8158232?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80" alt="Artist placeholder image">
