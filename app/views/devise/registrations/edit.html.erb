@@ -1,5 +1,8 @@
-<div class="container py-5">
-  <h2>Edit my profile</h2>
+<div class="form-container">
+
+  <div class="form-box">
+
+    <h1 class="text-center login-header">Edit my profile</h1>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= f.error_notification %>
@@ -22,6 +25,10 @@
         <%= f.label :country_code, "Country *", class: "form-label required" %>
         <%= f.country_select :country_code, {}, {class: "form-select"} %>
       </div>
+      <%= f.input :city,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "city" }%>
       <%= f.input :address,
                   hint: "Optional",
                   required: false,
@@ -33,9 +40,10 @@
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Update", class: "btn btn-primary" %>
+      <%= f.button :submit, "Update", class: "btn-accent" %>
     </div>
   <% end %>
 
-  <%= link_to "Back", :back %>
+    <%= render "devise/shared/links" %>
+  </div>
 </div>

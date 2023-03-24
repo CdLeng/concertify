@@ -1,5 +1,6 @@
 .layout-container {
   background-color: #292929;
+  background-color: #161616;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -33,7 +34,6 @@
   padding: 5px;
   border-radius: 8px;
   border: 0px;
-  transition: all ease-in-out 0.3s;
   a {
     text-decoration: none;
     font-size: 16px;
@@ -43,8 +43,8 @@
   }
 }
 .btn-accent:hover {
-  font-weight: bold;
-  box-shadow: 0px 0px 15px #39aea88a;
+  background-color: #127a75;
+  color: white;
 }
 .pink {
   color: lightcoral;
