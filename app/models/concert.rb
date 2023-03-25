@@ -5,4 +5,7 @@ class Concert < ApplicationRecord
   validates :date, presence: true
   validates :price, numericality: { greater_than: 0 }
   validates :description, length: { maximum: 5000 }
+
+  geocoded_by :location
+  after_validation :geocode, if: :will_save_change_to_location?
 end

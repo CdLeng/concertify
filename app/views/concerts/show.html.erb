@@ -5,6 +5,19 @@
       <h2><%= link_to @concert.artist.name.upcase, artist_path(@concert.artist) %></h2>
       <p>Concert in <u><%= @concert.date.strftime("%B %Y") %></u></p>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
     <div class="concert-body">
       <img src="https://cdn.vysokeskoly.cz/czech-universities/uploads/2020/01/3380.jpg" alt="concert photo">
       <div class="description">
@@ -37,3 +50,6 @@
     <%= link_to "Go back", root_path, class: "btn btn-light my-5" %>
   </div>
 </div>
+
+
+<%# Concert.near([40.71, 100.23], 20)  Concerts near certain point, with a 20 km  radius %>
