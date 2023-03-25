@@ -16,6 +16,7 @@ class ArtistsController < ApplicationController
   def show
     @artist = Artist.find(params[:id])
     authorize @artist
+    return_concerts(@artist)
   end
 
   def create
@@ -86,5 +87,49 @@ class ArtistsController < ApplicationController
     }
     response = HTTParty.get("https://api.spotify.com/v1/search?q=#{encoded_query}&type=artist&limit=35", headers: headers)
     @results = response["artists"]["items"]
+  end
+
+  def return_concerts(artist)
+    @artist = artist
+    @artist_name = artist.name
+    @results = []
+    url = "https://app.ticketmaster.com/discovery/v2/events.json?size=10&keyword=#{@artist_name}&apikey=#{ENV["TICKETMASTER_APIKEY"]}"
+    response = URI.parse(url).read
+    json = JSON.parse(response)
+    concerts = json["_embedded"]["events"]
+    concerts.each do |c|
+      subhash = {}
+      address = {}
+      subhash["title"] = c["name"]
+      subhash["tm_id"] = c["id"]
+      subhash["date"] = c["dates"]["start"]["localDate"]
+      # c["priceRanges"][0]["min"] ? 'value exists' : 'value don\'t exist and returns nil'
+      # subhash["price"] = '' if c["priceRanges"][0]["min"].nil?
+      address["city"] = c["_embedded"]["venues"][0]["city"]["name"]
+      address["country"] = c["_embedded"]["venues"][0]["country"]["countryCode"]
+      address["postalCode"] = c["_embedded"]["venues"][0]["postalCode"]
+      address["address"] = c["_embedded"]["venues"][0]["address"]["line1"]
+      subhash["address"] = address
+      subhash["image"] = c["images"][0]["url"]
+      subhash["ticket_url"] = c["url"]
+      @results.push(subhash)
+    end
+    create_concerts(@results)
+  end
+
+  def create_concerts(results)
+    results.each do |concert|
+      @concert_found = Concert.find_by(tm_id: concert["tm_id"])
+      unless @concert_found
+        new_concert = Concert.new
+        new_concert.artist = @artist
+        new_concert.tm_id = concert["tm_id"]
+        new_concert.location = concert["address"].values.join(", ")
+        new_concert.date = concert["date"]
+        new_concert.price = concert["price"]
+        new_concert.ticket_url = concert["ticket_url"]
+        new_concert.save
+      end
+    end
   end
 end

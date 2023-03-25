@@ -16,7 +16,9 @@
         <div class="box-right">
           <div class="box-price">
             <p><strong style="color: #39AEA9">PRICE FROM</strong></p>
-            <p class="price"><%= @concert.price.floor %>€</p>
+            <% if @concert.price %>
+              <p class="price"><%= @concert.price.floor %>€</p>
+            <% end %>
          </div>
 
           <div class="box-buy">
