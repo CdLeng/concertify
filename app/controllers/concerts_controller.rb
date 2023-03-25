@@ -3,15 +3,15 @@ class ConcertsController < ApplicationController
 
   def show
     @concert = Concert.find(params[:id])
+
     authorize @concert
 
+    @markers = [ {
+          lat: @concert.latitude,
+          lng: @concert.longitude,
+          info_window_html: render_to_string(partial: "popup", locals: {concert: @concert})
+        } ]
 
-    @markers = @concert.geocoded.map do |concert|
-      {
-        lat: concert.latitude,
-        lng: concert.longitude
-      }
-    end
 
   end
 
