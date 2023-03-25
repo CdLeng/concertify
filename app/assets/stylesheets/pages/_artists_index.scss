@@ -1,3 +1,12 @@
+.layout-container-artist-show {
+  background-color: #161616;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 180px;
+}
+
 .card-artist-container {
   display: flex;
   flex-direction: column;
@@ -48,17 +57,13 @@
   font-size: 32px;
 }
 
-.event-title-show {
-  font-size: 18px;
-  color: #39AEA9;
-  font-weight: 400;
-}
 
 .show-artist-title {
-  font-family: $headers-font;
-  color: $color-white;
+  font-family: 'Bebas Neue', cursive;
+  color: $color-accent;
+  text-shadow: 0px 0px 15px rgba(7, 7, 7, 0.801);
   font-weight: 400;
-  font-size: 50px;
+  font-size: 110px;
   text-align: center;
 }
 

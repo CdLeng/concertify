@@ -1,5 +1,5 @@
 .layout-container {
-  background-color: #292929;
+  background-color: #161616;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -26,6 +26,7 @@
 
 .banner-show {
   width: 100%;
+  background-color: transparent;
   font-family: $headers-font;
   color: $color-white;
   font-weight: bold;
@@ -94,13 +95,18 @@
   margin-bottom: 25px;
   border-radius: 8px;
   border: 0px;
-  transition: all ease-in-out 0.3s;
+  transition: all ease-in-out 0.2s;
   color: $color-white;
   text-decoration: none;
   text-align: center;
   font-size: 16px;
   font-family: $headers-font;
   display: block;
+}
+
+.btn-show-back:hover {
+  color: white;
+  background-color: #127a75;
 }
 .btn-accent-show:hover {
   font-weight: bold;
@@ -111,4 +117,8 @@
 }
 .yellow {
   color: rgb(255, 205, 69);
+}
+
+.margin-top {
+  margin-top: 70px;
 }
