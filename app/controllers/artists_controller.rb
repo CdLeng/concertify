@@ -92,44 +92,58 @@ class ArtistsController < ApplicationController
   def return_concerts(artist)
     @artist = artist
     @artist_name = artist.name
-    @results = []
-    url = "https://app.ticketmaster.com/discovery/v2/events.json?size=10&keyword=#{@artist_name}&apikey=#{ENV["TICKETMASTER_APIKEY"]}"
-    response = URI.parse(url).read
-    json = JSON.parse(response)
-    concerts = json["_embedded"]["events"]
-    concerts.each do |c|
-      subhash = {}
-      address = {}
-      subhash["title"] = c["name"]
-      subhash["tm_id"] = c["id"]
-      subhash["date"] = c["dates"]["start"]["localDate"]
-      # c["priceRanges"][0]["min"] ? 'value exists' : 'value don\'t exist and returns nil'
-      # subhash["price"] = '' if c["priceRanges"][0]["min"].nil?
-      address["city"] = c["_embedded"]["venues"][0]["city"]["name"]
-      address["country"] = c["_embedded"]["venues"][0]["country"]["countryCode"]
-      address["postalCode"] = c["_embedded"]["venues"][0]["postalCode"]
-      address["address"] = c["_embedded"]["venues"][0]["address"]["line1"]
-      subhash["address"] = address
-      subhash["image"] = c["images"][0]["url"]
-      subhash["ticket_url"] = c["url"]
-      @results.push(subhash)
+    encoded_query = CGI::escape(@artist_name)
+    attraction_url = "https://app.ticketmaster.com/discovery/v2/attractions.json?size=5&keyword=#{encoded_query}&apikey=#{ENV["TICKETMASTER_APIKEY"]}"
+    attraction_response = URI.parse(attraction_url).read
+    attraction_json = JSON.parse(attraction_response)
+    unless attraction_json["page"]["totalElements"] == 0
+      @attraction_id = attraction_json["_embedded"]["attractions"][0]["id"]
+      events_url = "https://app.ticketmaster.com/discovery/v2/events.json?size=75&attractionId=#{@attraction_id}&apikey=#{ENV["TICKETMASTER_APIKEY"]}"
+      events_response = URI.parse(events_url).read
+      events_json = JSON.parse(events_response)
+      unless events_json["page"]["totalElements"] == 0
+        concerts = events_json["_embedded"]["events"]
+          concerts.each do |c|
+            concert_params(c)
+            create_concert
+          end
+      end
     end
-    create_concerts(@results)
   end
 
-  def create_concerts(results)
-    results.each do |concert|
-      @concert_found = Concert.find_by(tm_id: concert["tm_id"])
+  def concert_params(params)
+    @concert_title = params["name"]
+    @concert_tm_id = params["id"]
+    @concert_price = params["priceRanges"] ? params["priceRanges"][0]["min"] : rand(20..100)
+    @concert_date = params["dates"]["start"]["localDate"]
+    @concert_location = params["_embedded"]["venues"][0]["name"]
+    @concert_city = params["_embedded"]["venues"][0]["city"]["name"]
+    @concert_country = params["_embedded"]["venues"][0]["country"]["countryCode"]
+    @concert_address = params["_embedded"]["venues"][0]["address"]["line1"]
+    @concert_latitude = params["_embedded"]["venues"][0]["location"]["latitude"]
+    @concert_longitude = params["_embedded"]["venues"][0]["location"]["longitude"]
+    @concert_image_url = params["images"][0]["url"]
+    @concert_ticket_url = params["url"]
+  end
+
+  def create_concert
+    @concert_found = Concert.find_by(tm_id: @concert_tm_id)
       unless @concert_found
         new_concert = Concert.new
         new_concert.artist = @artist
-        new_concert.tm_id = concert["tm_id"]
-        new_concert.location = concert["address"].values.join(", ")
-        new_concert.date = concert["date"]
-        new_concert.price = concert["price"]
-        new_concert.ticket_url = concert["ticket_url"]
+        new_concert.title = @concert_title
+        new_concert.tm_id = @concert_tm_id
+        new_concert.location = @concert_location
+        new_concert.address = @concert_address
+        new_concert.city = @concert_city
+        new_concert.country = @concert_country
+        new_concert.latitude = @concert_latitude
+        new_concert.longitude = @concert_longitude
+        new_concert.date = @concert_date
+        new_concert.price = @concert_price
+        new_concert.ticket_url = @concert_ticket_url
+        new_concert.image_url = @concert_image_url
         new_concert.save
       end
-    end
   end
 end

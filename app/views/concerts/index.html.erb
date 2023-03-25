@@ -3,37 +3,48 @@
 
   <div class="banner-one">
     <h1 class="text-center">Find your next concert!</h1>
-    <%= form_with url: artists_path, method: :get, class: "d-flex search-form-border" do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control search-input-dark",
-        placeholder: "Find an artist"
-      %>
-      <%= submit_tag "Search", class: "search-btn" %>
-    <% end %>
   </div>
 
 
   <div class="card-concert-container">
-    <% @concerts.each do |concert|   %>
+    <% if @followed_artists.empty? %>
+      <p>You're not following any artists yet.
+      To see some recommended concerts please follow some artists.</p>
+      <%= form_with url: artists_path, method: :get, class: "d-flex search-form-border" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control search-input-dark",
+        placeholder: "Find some artists to follow"
+      %>
+      <%= submit_tag "Search", class: "search-btn" %>
+    <% end %>
 
-      <div class="card-concert">
-        <div class="card-img">
-          <img src="https://media.istockphoto.com/id/1193274679/photo/excited-crowd-on-a-rock-concert.jpg?s=612x612&w=0&k=20&c=330XDxllhunHf5dt_IwMO2yxPBjXb5j_WMkf_0oWBmU=" alt="concert image">
-          <p class="img-date"><%= concert.date %></p>
+    <% else %>
+      <% @followed_artists.each do |fa|   %>
+        <% fa.artist.concerts.each do |c| %>
+          <div class="card-concert">
+            <div class="card-img">
+            <% if c.artist.image_url %>
+              <img src="<%= c.artist.image_url %>" alt="">
+            <% else %>
+              <img src="https://media.istockphoto.com/id/1193274679/photo/excited-crowd-on-a-rock-concert.jpg?s=612x612&w=0&k=20&c=330XDxllhunHf5dt_IwMO2yxPBjXb5j_WMkf_0oWBmU=" alt="concert image">
+            <% end %>
+              <p class="img-date"><%= c.date %></p>
 
-        </div>
-        <div class="card-body">
-          <div class="d-flex justify-content-between align-items-center">
-            <div><p class="card-header mb-2"><%= link_to concert.artist.name, artist_path(concert.artist) %></p></div>
-            <div><p><%= button_to "Save", {action: "create", :concert_id => concert.id, :controller => "saved_concerts", method: :post}, {class: "save"} %></p></div>
+            </div>
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <div><p class="card-header mb-2"><%= link_to c.title, artist_path(c.artist) %></p></div>
+                <div><p><%= button_to "Save", {action: "create", :concert_id => c.id, :controller => "saved_concerts", method: :post}, {class: "save"} %></p></div>
+              </div>
+              <p class="card-description"><strong></strong><%= c.location %></p>
+              <div class="d-flex justify-content-center align-items-center">
+                <button class="btn-accent"><%= link_to "See more", concert_path(c)%></button>
+              </div>
+            </div>
           </div>
-          <p class="card-description"><strong></strong><%= concert.location %></p>
-          <div class="d-flex justify-content-center align-items-center">
-            <button class="btn-accent"><%= link_to "See more", concert_path(concert)%></button>
-          </div>
-        </div>
-      </div>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
 

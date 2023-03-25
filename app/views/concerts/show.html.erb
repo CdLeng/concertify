@@ -6,10 +6,15 @@
       <p>Concert in <u><%= @concert.date.strftime("%B %Y") %></u></p>
     </div>
     <div class="concert-body">
+    <% if @concert.image_url.present? %>
+      <img src="<%= @concert.artist.image_url %>" alt="Concert image">
+    <% else %>
       <img src="https://cdn.vysokeskoly.cz/czech-universities/uploads/2020/01/3380.jpg" alt="concert photo">
+    <% end %>
       <div class="description">
         <div class="box-left">
-          <p><strong style="color: #39AEA9">ABOUT: </strong><%= @concert.description %></p>
+          <% last_space_index = @concert.artist.description.slice(0, 160).rindex(" ") %>
+          <p><strong style="color: #39AEA9">ABOUT: </strong><%= @concert.artist.description.slice(0, last_space_index) ... %></p>
           <p><strong style="color: #39AEA9">WHERE: </strong><%= @concert.location %></p>
           <p><strong style="color: #39AEA9">WHEN: </strong><%= @concert.date %></p>
         </div>
@@ -22,7 +27,7 @@
          </div>
 
           <div class="box-buy">
-            <%= link_to "Buy ticket", @concert.ticket_url%>
+            <%= link_to "Buy ticket", @concert.ticket_url, target: "_blank"%>
           </div>
 
           <div class="box-save">
