@@ -1,26 +1,75 @@
-<div class="container">
-  <h1 class="text-center"><%= @artist.name%>'s page</h1>
-  <% if @artist.image_url %>
-    <img src="<%= @artist.image_url %>" alt="Artist image">
-  <% end %>
-  <h3>Genres</h3>
-  <% @artist.genres.each do |genre| %>
-    <li><%= genre.name %></li>
-  <% end %>
-  <h3>About <%= @artist.name %></h3>
-  <% if @artist.description %>
-    <p><%= @artist.description %></p>
-  <% end %>
-  <%= button_to "Follow this artist!", {action: "create", :artist_id => @artist.id, :controller => "followed_artists", method: :post}, {class: "btn btn-primary"} %>
+<div class="layout-container-artist-show">
+
+  <div class="banner-show-round">
+    <% if @artist.image_url.present? %>
+      <img id="round-artist" src="<%= @artist.image_url %>" alt="artist photo">
+    <% else %>
+      <img id="round-artist" src="https://images.unsplash.com/photo-1605722243979-fe0be8158232?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80" alt="artist photo">
+    <% end %>
+
+    <h1 class="show-artist-title"><%= @artist.name%></h1>
+  </div>
+
+  <div class="artist-information">
+    <div class="artist-description-show-container">
+      <div class="artist-genres-show">
+        <% @artist.genres.each do |genre| %>
+          <p class="artist-genre-list"><%= genre.name %></p>
+        <% end %>
+      </div>
+
+      <div class="artist-description-show">
+
+          <% if @artist.description %>
+            <p> <%= @artist.description %> </p>
+          <% end %>
+      </div>
+
+    </div>
+
+
+    <div class="artist-follow-show">
+      <%= button_to "Follow", {action: "create", :artist_id => @artist.id, :controller => "followed_artists", method: :post}, {class: "btn-accent"} %>
+    </div>
+
+  </div>
+
+
+  <div class="artist-concerts-container">
+    <h3>NEXT CONCERTS</h3>
+
+
+
+
     <% @artist.concerts.each do |concert|   %>
-      <div class="card my-2">
-        <div class="card-body">
-          <p><strong>Concert's location: </strong><%= concert.location %></p>
-          <p><strong>Concert's description: </strong><%= concert.description %></p>
-          <p><strong>Date: </strong><%= concert.date %></p>
-          <%= link_to "See more", concert_path(concert), class: "btn btn-info" %>
+      <div class="artist-concert-card-container">
+
+        <div class="artist-show-date">
+          <p class="event-title-show"><%= concert.date.strftime("%B") %></p>
+          <p class="event-title-show"><%= concert.date.strftime("%d") %></p>
+        </div>
+
+        <div class="artist-show-card-body">
+          <div class="x">
+            <p class="event-title-show"><strong> Location: </strong><%= concert.location %></p>
+            <p class="event-title-show"><strong> Info: </strong><%= concert.description %></p>
+            <p class="event-title-show"><strong> Year: </strong><%= concert.date.strftime("%Y") %></p>
+
+          </div>
+          <div class="z">
+            <%= link_to "More info", concert_path(concert), class: "btn-accent" %>
+
+            <%= button_to "Save", {action: "create", :concert_id => concert.id, :controller => "saved_concerts", method: :post}, {class: "btn-accent "} %>
+
+
+
+          </div>
         </div>
       </div>
     <% end %>
-  <%= link_to "Go back", root_path, class: "btn btn-primary" %>
+
+
+  </div>
+  <%= link_to "Go back", root_path, class: "btn-show-back margin-top" %>
+
 </div>
