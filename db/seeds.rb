@@ -41,7 +41,7 @@ end
 
 puts "Creating concerts.."
 
-5.times do
+8.times do
   artist = artists.sample
   location = ["Lisbon", "Barcelona", "Berlin", "London", "Beijing", "Porto", "Azores", "Paris"]
   description = Faker::Lorem.paragraph(sentence_count: 2, supplemental: true, random_sentences_to_add: 4)
@@ -49,7 +49,7 @@ puts "Creating concerts.."
   date = Faker::Date.forward(days: 60)
   ticket_url = "https://concertify.app"
   concert = Concert.new
-  concert.location =location.sample
+  concert.location = location.sample
   concert.description = description
   concert.price = price
   concert.ticket_url = ticket_url
