@@ -41,7 +41,7 @@ end
 
 puts "Creating concerts.."
 
-20.times do
+5.times do
   artist = artists.sample
   location = ["Lisbon", "Barcelona", "Berlin", "London", "Beijing", "Porto", "Azores", "Paris"]
   description = Faker::Lorem.paragraph(sentence_count: 2, supplemental: true, random_sentences_to_add: 4)
