@@ -13,7 +13,11 @@
 
       <% @concerts.each do |concert|   %>
         <div class="item one masonry-cell">
-          <img class="item-1-img" src="https://media.istockphoto.com/id/1193274679/photo/excited-crowd-on-a-rock-concert.jpg?s=612x612&w=0&k=20&c=330XDxllhunHf5dt_IwMO2yxPBjXb5j_WMkf_0oWBmU=" alt="concert image">
+          <% if concert.artist.image_url %>
+            <img src="<%= concert.artist.image_url %>" alt="Concert image", class="item-1-img">
+          <% else %>
+            <img class="item-1-img" src="https://media.istockphoto.com/id/1193274679/photo/excited-crowd-on-a-rock-concert.jpg?s=612x612&w=0&k=20&c=330XDxllhunHf5dt_IwMO2yxPBjXb5j_WMkf_0oWBmU=" alt="concert image">
+          <% end %>
           <p class="masonry-date hover-disapear"><%= link_to "#{concert.artist.name}", concert_path(concert), class: "" %> <br><span> <%=concert.date.strftime("%B %d")%></span></p>
 
         </div>
