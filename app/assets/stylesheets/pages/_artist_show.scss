@@ -178,7 +178,17 @@
         padding: 3px 30px;
         border-radius: 20px;
         width: fit-content;
-
+        margin-left: 10px;
+      }
+      .btn-accent:hover {
+        color: white;
+      }
+      .save {
+        background-color: rgb(247, 226, 107);
+        margin-left: 10px;
+      }
+      .save:hover {
+        background-color: rgb(228, 202, 59);
 
       }
     }
