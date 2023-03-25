@@ -2,40 +2,23 @@
 <div class="concerts-layout">
 
   <div class="banner-one">
-    <h1 class="text-center">Find your next concert!</h1>
-    <%= form_with url: artists_path, method: :get, class: "d-flex search-form-border" do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control search-input-dark",
-        placeholder: "Find an artist"
-      %>
-      <%= submit_tag "Search", class: "search-btn" %>
-    <% end %>
+    <h1 class="text-center">Concerts from your favourite artists!    <i class="fa-solid fa-heart pink"></i> </h1>
   </div>
 
 
 
   <div class="big-box">
 
-  <div class="masonry-grid">
+    <div class="masonry-grid">
 
-    <% @concerts.each do |concert|   %>
-    <div class="item one masonry-cell">
-      <img class="item-1-img" src="https://media.istockphoto.com/id/1193274679/photo/excited-crowd-on-a-rock-concert.jpg?s=612x612&w=0&k=20&c=330XDxllhunHf5dt_IwMO2yxPBjXb5j_WMkf_0oWBmU=" alt="concert image">
-      <p class="masonry-date hover-disapear"><%= link_to "#{concert.artist.name}", concert_path(concert), class: "" %> <br><span> <%=concert.date.strftime("%B %d")%></span></p>
+      <% @concerts.each do |concert|   %>
+        <div class="item one masonry-cell">
+          <img class="item-1-img" src="https://media.istockphoto.com/id/1193274679/photo/excited-crowd-on-a-rock-concert.jpg?s=612x612&w=0&k=20&c=330XDxllhunHf5dt_IwMO2yxPBjXb5j_WMkf_0oWBmU=" alt="concert image">
+          <p class="masonry-date hover-disapear"><%= link_to "#{concert.artist.name}", concert_path(concert), class: "" %> <br><span> <%=concert.date.strftime("%B %d")%></span></p>
 
-
-
-
+        </div>
+      <% end %>
     </div>
-    <% end %>
-
-
-
-
-
-
-</div>
 
 
   </div>
