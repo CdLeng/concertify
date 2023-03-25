@@ -7,11 +7,27 @@
 
 
 
-  <div class="big-box">
+<div
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+  id='map'
+  style='width: 100%; height: 300px; border-radius: 10px'>
+</div>
+
+
+
+
+
+
+
+
+
+  <div class="big-box mt-5">
 
     <div class="masonry-grid">
 
-      <% @concerts.each do |concert|   %>
+      <% @concerts_sample.each do |concert|   %>
         <div class="item one masonry-cell">
           <% if concert.artist.image_url %>
             <img src="<%= concert.artist.image_url %>" alt="Concert image", class="item-1-img">
