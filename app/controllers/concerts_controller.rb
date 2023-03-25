@@ -12,7 +12,6 @@ class ConcertsController < ApplicationController
           info_window_html: render_to_string(partial: "popup", locals: {concert: @concert})
         } ]
 
-
   end
 
   def index
