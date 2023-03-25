@@ -67,6 +67,12 @@
   border-radius: 5px;
   position: relative;
   box-shadow: 0px 0px 30px rgb(15, 15, 15);
+  transition: all ease-in-out 0.2s;
+
+}
+.item:hover {
+  // box-shadow: 0px 0px 5px #1c979179;
+  transform: scale(1.02);
 
 }
 
@@ -123,16 +129,30 @@
   background: rgb(255,255,255);
   background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 70%);  height: fit-content;
 
+  a {
+    text-decoration: none;
+    color: #141414;
+  }
 
   span {
-    font-size: 22px;
+    font-size: 18px;
     font-family: $body-font;
     margin: 0;
     margin-top: 0px;
     padding: 0;
-    font-weight: bold;
+    font-weight:bold;
     text-decoration: underline;
+    color: #141414;
   }
+}
+.hover-disapear:hover {
+  a {
+    color: black;
+  }
+  span {
+    color: black;
+  }
+
 }
 
 .one {
@@ -143,21 +163,7 @@
 }
 
 
-.one:hover {
-  .hover-disapear {
-    opacity: 0;
 
-  }
-
-  .hover-appear {
-
-    opacity: 1;
-
-  }
-  img {
-    opacity: 0.5;
-  }
-}
 
 .concerts-layout {
   .btn-accent {

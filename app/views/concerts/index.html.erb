@@ -22,13 +22,11 @@
     <% @concerts.each do |concert|   %>
     <div class="item one masonry-cell">
       <img class="item-1-img" src="https://media.istockphoto.com/id/1193274679/photo/excited-crowd-on-a-rock-concert.jpg?s=612x612&w=0&k=20&c=330XDxllhunHf5dt_IwMO2yxPBjXb5j_WMkf_0oWBmU=" alt="concert image">
-      <p class="masonry-date hover-disapear"><%= concert.artist.name%> <br><span> <%=concert.date.strftime("%B %d")%></span></p>
+      <p class="masonry-date hover-disapear"><%= link_to "#{concert.artist.name}", concert_path(concert), class: "" %> <br><span> <%=concert.date.strftime("%B %d")%></span></p>
 
 
 
-      <div class="hover-appear">
-        <p class="masonry-date ">    <%= link_to "#{concert.date.strftime("%B %d")}", concert_path(concert)%></p>
-      </div>
+
     </div>
     <% end %>
 
