@@ -45,8 +45,8 @@
             <div class="concert-profile-card">
                 <%# <img src="https://media.istockphoto.com/id/1193274679/photo/excited-crowd-on-a-rock-concert.jpg?s=612x612&w=0&k=20&c=330XDxllhunHf5dt_IwMO2yxPBjXb5j_WMkf_0oWBmU=" alt="concert image"> %>
               <div class="dt">
-                <h4><%= concert.concert.date.strftime("%d") %></h4>
-                <p><%= concert.concert.date.strftime("%B") %></p>
+                <h4><%= link_to concert.concert.date.strftime("%d"), concert_path(concert.concert) %></h4>
+                <p><%= link_to concert.concert.date.strftime("%B"), concert_path(concert.concert) %></p>
               </div>
               <div class="art">
                 <p><%= link_to concert.concert.artist.name, concert_path(concert.concert) %></p>
@@ -67,11 +67,11 @@
         <% @followed_artists.each do |artist|   %>
           <div class="artist-card-profile">
             <% if artist.artist.image_url %>
-              <img src="<%= artist.artist.image_url %>" alt="Artist image">
+              <%= link_to image_tag(artist.artist.image_url, alt: "Artist image"), artist_path(artist.artist) %>
             <% else %>
               <img src="https://images.unsplash.com/photo-1605722243979-fe0be8158232?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80" alt="Artist placeholder image">
             <% end %>
-           <p><%= link_to "#{artist.artist.name}", artist_path(artist.artist)%></p>
+           <p><%= link_to artist.artist.name, artist_path(artist.artist)%></p>
           </div>
         <% end %>
       </div>
