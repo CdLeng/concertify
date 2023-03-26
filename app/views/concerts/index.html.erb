@@ -1,54 +1,35 @@
 
-<div class="layout-container">
+<div class="concerts-layout">
 
   <div class="banner-one">
-    <h1 class="text-center">Find your next concert!</h1>
+    <h1 class="text-center">Concerts from your favourite artists!    <i class="fa-solid fa-heart pink"></i> </h1>
   </div>
 
+  <div
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+    id='map'
+    style='width: 100%; height: 300px; border-radius: 10px'>
+  </div>
 
-  <div class="card-concert-container">
-    <% if @followed_artists.empty? %>
-      <p>You're not following any artists yet.
-      To see some recommended concerts please follow some artists.</p>
-      <%= form_with url: artists_path, method: :get, class: "d-flex search-form-border" do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control search-input-dark",
-        placeholder: "Find some artists to follow"
-      %>
-      <%= submit_tag "Search", class: "search-btn" %>
-    <% end %>
+  <div class="big-box mt-5">
+    <div class="masonry-grid">
+      <% @concerts_sample.each do |concert|   %>
+        <div class="item one masonry-cell">
+          <% if concert.artist.image_url %>
+            <img src="<%= concert.artist.image_url %>" alt="Concert image", class="item-1-img">
+          <% else %>
+            <img class="item-1-img" src="https://media.istockphoto.com/id/1193274679/photo/excited-crowd-on-a-rock-concert.jpg?s=612x612&w=0&k=20&c=330XDxllhunHf5dt_IwMO2yxPBjXb5j_WMkf_0oWBmU=" alt="concert image">
+          <% end %>
+          <p class="masonry-date hover-disapear"><%= link_to "#{concert.artist.name}", concert_path(concert), class: "" %> <br><span> <%=concert.date.strftime("%B %d")%></span></p>
 
-    <% else %>
-      <% @followed_artists.each do |fa|   %>
-        <% fa.artist.concerts.each do |c| %>
-          <div class="card-concert">
-            <div class="card-img">
-            <% if c.artist.image_url %>
-              <img src="<%= c.artist.image_url %>" alt="">
-            <% else %>
-              <img src="https://media.istockphoto.com/id/1193274679/photo/excited-crowd-on-a-rock-concert.jpg?s=612x612&w=0&k=20&c=330XDxllhunHf5dt_IwMO2yxPBjXb5j_WMkf_0oWBmU=" alt="concert image">
-            <% end %>
-              <p class="img-date"><%= c.date %></p>
-
-            </div>
-            <div class="card-body">
-              <div class="d-flex justify-content-between align-items-center">
-                <div><p class="card-header mb-2"><%= link_to c.title, artist_path(c.artist) %></p></div>
-                <div><p><%= button_to "Save", {action: "create", :concert_id => c.id, :controller => "saved_concerts", method: :post}, {class: "save"} %></p></div>
-              </div>
-              <p class="card-description"><strong></strong><%= c.location %></p>
-              <div class="d-flex justify-content-center align-items-center">
-                <button class="btn-accent"><%= link_to "See more", concert_path(c)%></button>
-              </div>
-            </div>
-          </div>
-        <% end %>
+        </div>
       <% end %>
-    <% end %>
+    </div>
   </div>
 
-  <div>
-    <%= link_to "Go back", root_path, class: "btn btn-light my-5 rounded" %>
+  <div class="banner-one text-center back">
+    <%= link_to "Go back", root_path, class: "btn btn-accent" %>
   </div>
 </div>

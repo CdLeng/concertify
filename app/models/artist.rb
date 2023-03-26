@@ -6,7 +6,7 @@ class Artist < ApplicationRecord
   has_many :followed_artist, dependent: :destroy
   validates :name, presence: true
   validates :description, length: { maximum: 5000 }
-  validates :spotify_id, presence: true, uniqueness: true
+  # validates :spotify_id, presence: true, uniqueness: true
 
   include PgSearch::Model
 

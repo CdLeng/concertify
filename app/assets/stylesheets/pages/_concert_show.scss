@@ -20,7 +20,7 @@
       font-size: 40px;
       color: #a0e9e5;
       color: whitesmoke;
-      font-family: 'Anton', sans-serif;
+      font-family: 'Bebas Neue', cursive;
       margin-top: 20px;
     }
   }
@@ -56,11 +56,20 @@
   border-radius: 20px;
   box-shadow: 0px 0px 30px rgba(26, 26, 26, 0.432);
 
+  .img-map {
+    display: flex;
+  }
+
   img {
-    width: 100%;
+    width: 50%;
     object-fit: cover;
-    border-top-right-radius: 20px;
     border-top-left-radius: 20px;
+    height: 300px;
+  }
+  .map-box{
+    width: 50%;
+    border-top-right-radius: 20px;
+
   }
 
   .description {

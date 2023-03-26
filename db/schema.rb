@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_25_112811) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_25_165414) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -69,14 +69,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_25_112811) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "artist_id"
+    t.float "latitude"
+    t.float "longitude"
     t.string "tm_id"
     t.string "title"
     t.string "image_url"
     t.string "city"
     t.string "address"
     t.string "country"
-    t.float "latitude"
-    t.float "longitude"
     t.index ["artist_id"], name: "index_concerts_on_artist_id"
   end
 
