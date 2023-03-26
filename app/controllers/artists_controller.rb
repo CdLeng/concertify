@@ -119,7 +119,7 @@ class ArtistsController < ApplicationController
     @concert_location = params["_embedded"]["venues"][0]["name"]
     @concert_city = params["_embedded"]["venues"][0]["city"]["name"]
     @concert_country = params["_embedded"]["venues"][0]["country"]["countryCode"]
-    @concert_address = params["_embedded"]["venues"][0]["address"]["line1"]
+    @concert_address = params["_embedded"]["venues"][0]["address"] ? params["_embedded"]["venues"][0]["address"]["line1"] : nil
     @concert_latitude = params["_embedded"]["venues"][0]["location"]["latitude"]
     @concert_longitude = params["_embedded"]["venues"][0]["location"]["longitude"]
     @concert_image_url = params["images"][0]["url"]

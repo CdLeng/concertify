@@ -15,7 +15,7 @@
 
   <div class="big-box mt-5">
     <div class="masonry-grid">
-      <% @concerts_sample.each do |concert|   %>
+      <% @filtered_concerts.each do |concert|   %>
         <div class="item one masonry-cell">
           <% if concert.artist.image_url %>
             <img src="<%= concert.artist.image_url %>" alt="Concert image", class="item-1-img">
@@ -28,6 +28,7 @@
       <% end %>
     </div>
   </div>
+
 
   <div class="banner-one text-center back">
     <%= link_to "Go back", root_path, class: "btn btn-accent" %>

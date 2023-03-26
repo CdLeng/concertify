@@ -18,9 +18,15 @@ class ConcertsController < ApplicationController
     @concerts = Concert.all
     user = current_user
     @followed_artists = user.followed_artists
-    @concerts_sample = @concerts.last(8)
+    @followed_concerts = []
+    @followed_artists.each do |fa|
+      fa.artist.concerts.each do |ct|
+        @followed_concerts.push(ct)
+      end
+    end
+    @filtered_concerts = @followed_concerts.sample(8)
 
-    @markers = @concerts.last(8).map do |concert|
+    @markers = @filtered_concerts.map do |concert|
       {
         lat: concert.latitude,
         lng: concert.longitude,
