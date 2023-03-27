@@ -15,6 +15,8 @@ module Concertify
     end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
+    RSpotify::authenticate("#{ENV["SPOTIFY_CLIENTID"]}", "#{ENV["SPOTIFY_CLIENTSECRET"]}")
+
 
     # Configuration for the application, engines, and railties goes here.
     #

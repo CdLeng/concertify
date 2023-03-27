@@ -9,4 +9,8 @@ class UserPolicy < ApplicationPolicy
   def show?
     true
   end
+
+  def spotify?
+    true
+  end
 end
