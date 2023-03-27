@@ -1,7 +1,7 @@
 class SavedConcertsController < ApplicationController
   def index
     @saved_concerts = policy_scope(SavedConcert)
-    @saved_concerts = SavedConcert.all
+    @saved_concerts = current_user.saved_concerts
   end
 
   def create
