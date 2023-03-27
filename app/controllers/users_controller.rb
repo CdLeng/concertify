@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
     @saved_concerts = SavedConcert.all
 
-    @followed_artists = FollowedArtist.all
+    @followed_artists = @user.followed_artists
 
     @genres = Genre.all
   end
