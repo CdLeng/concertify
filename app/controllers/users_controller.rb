@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     authorize @user
 
-    @saved_concerts = SavedConcert.all
+    @saved_concerts = @user.saved_concerts
 
     @followed_artists = @user.followed_artists
 
