@@ -5,14 +5,13 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     authorize @user
-    @saved_concerts = SavedConcert.all
+    @saved_concerts = @user.saved_concerts
     @followed_artists = @user.followed_artists
     @genres = Genre.all
   end
 
   def spotify
     spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
-    # Now you can access user's private data, create playlists and much more
 
     auth_token = spotify_user.credentials.token
     headers = {
