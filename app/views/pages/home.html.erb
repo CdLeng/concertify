@@ -64,9 +64,9 @@
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-center">
               <div><p class="card-header mb-2"><%= link_to concert.artist.name, artist_path(concert.artist) %></p></div>
-              <div><p><%= button_to "Save", {action: "create", :concert_id => concert.id, :controller => "saved_concerts", method: :post}, {class: "save"} %></p></div>
+
             </div>
-            <p class="card-description"><strong></strong><%= concert.location %></p>
+            <p class="card-description"><strong></strong><i class="fa-solid fa-location-dot"></i> <%= concert.location %></p>
             <div class="d-flex justify-content-center align-items-center">
               <button class="btn-accent"><%= link_to "See more", concert_path(concert)%></button>
             </div>
@@ -80,8 +80,8 @@
       <div class="about-left">
         <h1>About us</h1>
         <p>Welcome to Concertify! We help people find out when their favorite musicians are playing concerts, by making it easy for you to see live music and find new musicians you might like.<br><br>
-Our website is run by a team of people who love music and want to help others enjoy it too.<br><br>
-You can search for concerts near you and keep track of them on our website. We hope you have fun using our website and discovering new music!</p>
+            Our website is run by a team of people who love music and want to help others enjoy it too.<br><br>
+            You can search for concerts near you and keep track of them on our website. We hope you have fun using our website and discovering new music!</p>
       </div>
 
       <div class="about-right">
