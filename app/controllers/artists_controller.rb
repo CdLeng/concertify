@@ -98,7 +98,7 @@ class ArtistsController < ApplicationController
     attraction_json = JSON.parse(attraction_response)
     unless attraction_json["page"]["totalElements"] == 0
       @attraction_id = attraction_json["_embedded"]["attractions"][0]["id"]
-      events_url = "https://app.ticketmaster.com/discovery/v2/events.json?size=75&attractionId=#{@attraction_id}&apikey=#{ENV["TICKETMASTER_APIKEY"]}"
+      events_url = "https://app.ticketmaster.com/discovery/v2/events.json?size=10&attractionId=#{@attraction_id}&apikey=#{ENV["TICKETMASTER_APIKEY"]}"
       events_response = URI.parse(events_url).read
       events_json = JSON.parse(events_response)
       unless events_json["page"]["totalElements"] == 0

@@ -51,8 +51,9 @@
 
         <div class="artist-show-card-body">
           <div class="x">
+            <strong><p class="event-title-show"><strong> </strong><%= concert.title %></p></strong>
             <p class="event-title-show"><strong> Location: </strong><%= concert.location %></p>
-            <p class="event-title-show"><strong> Info: </strong><%= concert.description %></p>
+            <p class="event-title-show"><strong> Address: </strong><%= concert.city %>, <%= concert.country %></p>
             <p class="event-title-show"><strong> Year: </strong><%= concert.date.strftime("%Y") %></p>
 
           </div>
