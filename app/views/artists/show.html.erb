@@ -13,7 +13,7 @@
   <div class="artist-information">
     <div class="artist-description-show-container">
       <div class="artist-genres-show">
-        <% @artist.genres.each do |genre| %>
+        <% @artist.genres.first(6).each do |genre| %>
           <p class="artist-genre-list"><%= genre.name %></p>
         <% end %>
       </div>
@@ -21,24 +21,31 @@
       <div class="artist-description-show">
 
           <% if @artist.description %>
-            <p> <%= @artist.description %> </p>
+            <% last_space_index = @artist.description.slice(0, 300).rindex(" ") %>
+            <p><%= @artist.description.slice(0, last_space_index) ... %></p>
+
           <% end %>
+      </div>
+
+      <div class="artist-follow-show">
+        <%= button_to "Follow", {action: "create", :artist_id => @artist.id, :controller => "followed_artists", method: :post}, {class: "btn-accent"} %>
       </div>
 
     </div>
 
 
-    <div class="artist-follow-show">
-      <%= button_to "Follow", {action: "create", :artist_id => @artist.id, :controller => "followed_artists", method: :post}, {class: "btn-accent"} %>
-    </div>
+
 
   </div>
 
 
   <div class="artist-concerts-container">
-    <h3>NEXT CONCERTS</h3>
 
-
+    <% if @artist.concerts.empty? %>
+      <h3>No upcoming concerts...</h3>
+    <% else %>
+      <h3>NEXT CONCERTS</h3>
+    <% end %>
 
 
     <% @artist.concerts.each do |concert|   %>
