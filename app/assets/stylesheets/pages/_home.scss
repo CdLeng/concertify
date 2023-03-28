@@ -52,12 +52,13 @@
 
 
   .home-concerts {
-    width: 100%;
+    padding-top: 100px;
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     row-gap: 0px;
     column-gap: 50px;
+    padding: 0px 100px;
   }
   .home-subtitle {
     color: whitesmoke;
@@ -91,7 +92,7 @@
   padding: 0px 200px;
   height: 200px;
   width: 100%;
-  margin-bottom: 100px;
+  margin-bottom: 200px;
 
   .btn-ghost {
     background-color: #0D0D0D;
@@ -113,4 +114,42 @@
 .s {
   color: whitesmoke;
   font-size: 20px;
+}
+
+.banner-about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 200px;
+
+
+  h1 {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+
+  p {
+    color: white;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .about-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 50px;
+  }
+
+  .about-right {
+    img {
+      width: 500px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+  }
 }
