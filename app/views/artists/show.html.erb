@@ -21,7 +21,7 @@
       <div class="artist-description-show">
 
           <% if @artist.description %>
-            <% last_space_index = @artist.description.slice(0, 120).rindex(" ") %>
+            <% last_space_index = @artist.description.slice(0, 300).rindex(" ") %>
             <p><%= @artist.description.slice(0, last_space_index) ... %></p>
 
           <% end %>
