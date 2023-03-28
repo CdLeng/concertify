@@ -49,8 +49,8 @@
   }
 
   .artist-description-show-container {
-    width: 70%;
-    padding-right: 50px;
+    width: 100%;
+    padding-right: 10px;
 
     .artist-description-show {
       margin-top: 30px;
@@ -71,15 +71,13 @@
     }
   }
 
-  .artist-follow-show {
-    width: 30%;
-  }
+
 
   .artist-follow-show {
     display: flex;
     justify-content: right;
     align-items: end;
-    margin-right: 15px;
+    margin-right: 0px;
 
     button {
       padding: 3px 30px;

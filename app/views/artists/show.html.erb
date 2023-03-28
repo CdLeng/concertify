@@ -25,12 +25,14 @@
           <% end %>
       </div>
 
-    </div>
-
-
-    <div class="artist-follow-show">
+          <div class="artist-follow-show">
       <%= button_to "Follow", {action: "create", :artist_id => @artist.id, :controller => "followed_artists", method: :post}, {class: "btn-accent"} %>
     </div>
+
+    </div>
+
+
+
 
   </div>
 
