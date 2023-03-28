@@ -8,17 +8,14 @@
 
 
 
-
-
-
-
-
-
-
-
     <div class="concert-body">
       <div class="img-map">
-        <img src="https://cdn.vysokeskoly.cz/czech-universities/uploads/2020/01/3380.jpg" alt="concert photo">
+        <% if @concert.image_url.present? %>
+          <img src="<%= @concert.artist.image_url %>" alt="Concert image">
+        <% else %>
+          <img src="https://cdn.vysokeskoly.cz/czech-universities/uploads/2020/01/3380.jpg" alt="concert photo">
+        <% end %>
+
                                 <div class="map-box"
         data-controller="map"
         data-map-markers-value="<%= @markers.to_json %>"
@@ -31,18 +28,21 @@
 
       <div class="description mb-5">
         <div class="box-left">
-          <p><strong style="color: #39AEA9">ABOUT: </strong><%= @concert.description %></p>
+          <% last_space_index = @concert.artist.description.slice(0, 160).rindex(" ") %>
+          <p><strong style="color: #39AEA9">ABOUT: </strong><%= @concert.artist.description.slice(0, last_space_index) ... %></p>
           <p><strong style="color: #39AEA9">WHERE: </strong><%= @concert.location %></p>
           <p><strong style="color: #39AEA9">WHEN: </strong><%= @concert.date.strftime("%d %B %Y") %></p>
         </div>
         <div class="box-right">
           <div class="box-price">
             <p><strong style="color: #39AEA9">PRICE FROM</strong></p>
-            <p class="price"><%= @concert.price.floor %>€</p>
+            <% if @concert.price %>
+              <p class="price"><%= @concert.price.floor %>€</p>
+            <% end %>
          </div>
 
           <div class="box-buy">
-            <%= link_to "Buy ticket", @concert.ticket_url%>
+            <%= link_to "Buy ticket", @concert.ticket_url, target: "_blank"%>
           </div>
 
           <div class="box-save">

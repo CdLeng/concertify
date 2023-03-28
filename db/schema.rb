@@ -71,6 +71,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_25_165414) do
     t.bigint "artist_id"
     t.float "latitude"
     t.float "longitude"
+    t.string "tm_id"
+    t.string "title"
+    t.string "image_url"
+    t.string "city"
+    t.string "address"
+    t.string "country"
     t.index ["artist_id"], name: "index_concerts_on_artist_id"
   end
 
@@ -109,7 +115,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_25_165414) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.string "address"
-    t.string "profile_picture"
+    t.string "country_code"
+    t.string "city"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

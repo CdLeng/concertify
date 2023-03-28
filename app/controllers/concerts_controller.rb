@@ -1,32 +1,37 @@
 class ConcertsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index show]
+  skip_before_action :authenticate_user!, only: %i[show]
 
   def show
     @concert = Concert.find(params[:id])
 
     authorize @concert
 
-    @markers = [ {
+    @markers = [{
           lat: @concert.latitude,
           lng: @concert.longitude,
-          info_window_html: render_to_string(partial: "popup", locals: {concert: @concert})
-        } ]
-
-
+          info_window_html: render_to_string(partial: "popup", locals: { concert: @concert })
+         }]
   end
 
   def index
     @concerts = policy_scope(Concert)
     @concerts = Concert.all
-    @concerts_sample = @concerts.first(8)
+    user = current_user
+    @followed_artists = user.followed_artists
+    @followed_concerts = []
+    @followed_artists.each do |fa|
+      fa.artist.concerts.each do |ct|
+        @followed_concerts.push(ct)
+      end
+    end
+    @filtered_concerts = @followed_concerts.sample(8)
 
-    @markers = @concerts.geocoded.first(8).map do |concert|
+    @markers = @filtered_concerts.map do |concert|
       {
         lat: concert.latitude,
         lng: concert.longitude,
         info_window_html: render_to_string(partial: "popup", locals: {concert: concert})
       }
-
     end
   end
 end

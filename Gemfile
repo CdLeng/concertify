@@ -63,6 +63,12 @@ gem "cloudinary"
 # Gem for HTTP requests
 gem "httparty"
 
+# Gem for country select for user registration
+gem 'country_select', '~> 8.0'
+
+# Gem to geocode adress fields to coordinates
+gem "geocoder"
+
 gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
 gem "simple_form", github: "heartcombo/simple_form"
