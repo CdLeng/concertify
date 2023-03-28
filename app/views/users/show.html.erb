@@ -22,7 +22,10 @@
         <p class="text-left"><strong><i class="fa-solid fa-user mx-1"></i></strong> <%= @user.name.capitalize %></p>
         <p class="text-left"><strong><i class="fa-solid fa-envelope mx-1"></i> </strong> <%= @user.email %></p>
         <p><strong><i class="fa-solid fa-location-dot mx-1"></i> </strong> <%= "#{@user.city} #{@user.address} "%></p>
-        <br>
+        <div class="spotify-btn mb-3">
+            <i class="fa-brands fa-spotify"></i>
+            <%= link_to 'Sync with Spotify', '/auth/spotify', method: :post %>
+          </div>
         <div class="text-center">
           <p><%= link_to "Edit Profile", edit_user_registration_path, class: "edit-btn"%></p>
         </div>

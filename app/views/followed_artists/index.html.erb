@@ -19,8 +19,10 @@
         </div>
         <div class="artist-card-body">
           <h2><%= link_to "#{artist.artist.name}", artist_path(artist.artist)%></h2>
-          <% last_space_index = artist.artist.description.slice(0, 120).rindex(" ") %>
-          <p><%= artist.artist.description.slice(0, last_space_index) ... %></p>
+          <% if artist.artist.description %>
+            <% last_space_index = artist.artist.description.slice(0, 120).rindex(" ") %>
+            <%= artist.artist.description.slice(0, last_space_index) ... %></p>
+          <% end %>
         </div>
 
       </div>
