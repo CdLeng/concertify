@@ -20,11 +20,10 @@
 
         <% if user_signed_in? %>
         <% first_name = current_user.name.split[0] %>
-        <h5 class="text-center s mb-5"><strong>Hey <%= first_name.capitalize  %>! </strong>Search by...</h5>
-        <%# <h6 class="text-center home-subtitle">Concerts you might like...</h6> %>
+        <h5 class="text-center s mb-5"><strong>Hey <%= first_name.capitalize  %>! </strong></h5>
 
       <% else %>
-        <h5 class="text-center s">Search by...</h5>
+        <h5 class="text-center s">Begin your journey</h5>
 
       <% end %>
 
@@ -32,13 +31,9 @@
 
 
 
-
-
-    <%# <p class="text-center s">Search by...</p> %>
-
     <div class="home-links">
-      <%= link_to "CONCERTS", concerts_path, class: "btn btn-ghost" %>
-      <%= link_to "ARTISTS", artists_path, class: "btn btn-ghost" %>
+      <%= link_to "1. Discover new artists", artists_path, class: "btn btn-ghost" %>
+      <%= link_to "2. See upcoming concerts", concerts_path, class: "btn btn-ghost" %>
     </div>
 
 
