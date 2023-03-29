@@ -2,7 +2,8 @@
   <div class="show-concert-container">
     <div class="concert-title">
       <h2><%= link_to @concert.artist.name.upcase, artist_path(@concert.artist) %></h2>
-      <p>Concert in <u><%= @concert.date.strftime("%d %B %Y") %></u></p>
+      <p><%= @concert.title %></p>
+      <p>Concert on the <u><%= @concert.date.strftime("%d %B %Y") %></u></p>
     </div>
 
 
@@ -27,7 +28,7 @@
 
       <div class="description mb-5">
         <div class="box-left">
-          <% last_space_index = @concert.artist.description.slice(0, 160).rindex(" ") %>
+          <% last_space_index = @concert.artist.description.slice(0, 260).rindex(" ") %>
           <p><strong style="color: #39AEA9">ABOUT: </strong><%= @concert.artist.description.slice(0, last_space_index) ... %></p>
           <p><strong style="color: #39AEA9">WHERE: </strong><%= @concert.location %></p>
           <p><strong style="color: #39AEA9">WHEN: </strong><%= @concert.date.strftime("%d %B %Y") %></p>
