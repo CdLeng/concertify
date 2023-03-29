@@ -26,8 +26,16 @@
           <% end %>
       </div>
 
+
       <div class="artist-follow-show">
-        <%= button_to "Follow", {action: "create", :artist_id => @artist.id, :controller => "followed_artists", method: :post}, {class: "btn-accent"} %>
+      <% if user_signed_in? %>
+        <% if @user_following %>
+          <%= button_to "Follow", {action: "create", :artist_id => @artist.id, :controller => "followed_artists", method: :post}, {class: "btn-accent"} %>
+        <% else %>
+          <%= button_to "Unfollow", {:controller => :followed_artists,
+              :action => 'destroy', :id => @artist.id }, :method => :delete, class: "btn-accent" %>
+        <% end %>
+      <% end %>
       </div>
 
     </div>
