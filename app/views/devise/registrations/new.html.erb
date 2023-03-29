@@ -21,6 +21,14 @@
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "email" }%>
+      <div class="mb-3">
+        <%= f.label :country_code, "Country *", class: "form-label required" %>
+        <%= f.country_select :country_code, {}, {class: "form-select"} %>
+      </div>
+      <%= f.input :city,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "city" }%>
       <%= f.input :address,
                   required: true,
                   autofocus: true,

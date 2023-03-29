@@ -1,7 +1,7 @@
 class FollowedArtistsController < ApplicationController
   def index
     @followed_artists = policy_scope(FollowedArtist)
-    @followed_artists = FollowedArtist.all
+    @followed_artists = current_user.followed_artists
   end
 
   def create

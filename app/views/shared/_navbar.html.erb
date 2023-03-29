@@ -22,9 +22,9 @@
           <li class="nav-item dropdown">
             <div class="dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <% if current_user.photo.key %>
-                <%= cl_image_tag current_user.photo.key, height: 40, width: 40, radius: 100, background: "#202020" %>
+                <%= cl_image_tag current_user.photo.key, class: "navbar-avatar"%>
               <% else %>
-                <%= image_tag "default_avatar_icon", class: "avatar" %>
+                <%= image_tag "default_avatar_icon.png", class: "avatar" %>
               <% end %>
             </div>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

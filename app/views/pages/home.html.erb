@@ -1,7 +1,10 @@
 <div class="home-container">
   <div class="home-banner">
     <div class="heading">
-      <h1 class="text-center neon-Text">Find your favourite concerts with Concertify</h1>
+
+
+
+      <h1 class="text-center neon-Text">DOn't miss out on any concerts!</h1>
       <%= form_with url: artists_path, method: :get, class: "d-flex search-form-border my-5" do %>
       <%= text_field_tag :query,
         params[:query],
@@ -14,40 +17,72 @@
   </div>
   <div class="second-banner">
     <h1 class="text-center concertifyy">Concertify</h1>
-    <% if user_signed_in? %>
-        <%= first_name = current_user.name.split[0] %>
-        <h5 class="text-center home-subtitle"><span class="cyan">Welcome back <%= first_name.capitalize  %>!</span></h5>
-        <h6 class="text-center home-subtitle">Checkout these concerts</h6>
+
+        <% if user_signed_in? %>
+        <% first_name = current_user.name.split[0] %>
+        <h5 class="text-center s mb-5"><strong>Hey <%= first_name.capitalize  %>! </strong></h5>
 
       <% else %>
-      <h1 class="text-center home-subtitle ">Checkout these concerts</h1>
+        <h5 class="text-center s">Begin your journey</h5>
+
       <% end %>
+
+
+
+
+
+    <div class="home-links">
+      <%= link_to "1. Discover new artists", artists_path, class: "btn btn-ghost" %>
+      <%= link_to "2. See upcoming concerts", concerts_path, class: "btn btn-ghost" %>
+    </div>
+
+
+
+    <h3 class="text-center s">Checkout these concerts!</h3>
 
     <div class="home-concerts">
 
-    <% @concerts.each do |concert|   %>
-      <div class="card-concert">
-        <div class="card-img">
-          <img src="https://media.istockphoto.com/id/1193274679/photo/excited-crowd-on-a-rock-concert.jpg?s=612x612&w=0&k=20&c=330XDxllhunHf5dt_IwMO2yxPBjXb5j_WMkf_0oWBmU=" alt="concert image">
-          <p class="img-date"><%= concert.date %></p>
-        </div>
+      <% @concerts_highlight.each do |artist|  %>
+        <% concert = artist.concerts.first %>
+        <div class="card-concert">
+          <div class="card-img">
 
-        <div class="card-body">
-          <div class="d-flex justify-content-between align-items-center">
-            <div><p class="card-header mb-2"><%= link_to concert.artist.name, artist_path(concert.artist) %></p></div>
-            <div><p><%= button_to "Save", {action: "create", :concert_id => concert.id, :controller => "saved_concerts", method: :post}, {class: "save"} %></p></div>
+            <% if artist.image_url %>
+              <img src="<%= artist.image_url %>" alt="Artist image">
+            <% else %>
+              <img src="https://images.unsplash.com/photo-1605722243979-fe0be8158232?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80" alt="Artist placeholder image">
+            <% end %>
+
+
+            <p class="img-date"><%= concert.date %></p>
           </div>
-          <p class="card-description"><strong></strong><%= concert.location %></p>
-          <div class="d-flex justify-content-center align-items-center">
-            <button class="btn-accent"><%= link_to "See more", concert_path(concert)%></button>
+
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+              <div><p class="card-header mb-2"><%= link_to artist.name, artist_path(artist) %></p></div>
+
+            </div>
+            <p class="card-description"><strong></strong><i class="fa-solid fa-location-dot"></i> <%= concert.location %></p>
+            <div class="d-flex justify-content-center align-items-center">
+              <button class="btn-accent"><%= link_to "See more", concert_path(concert)%></button>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
     </div>
-    <div class="home-links">
-      <%= link_to "See all concerts", concerts_path, class: "btn btn-ghost" %>
-        <%= link_to "See all artists", artists_path, class: "btn btn-ghost" %>
+
+
+    <div class="banner-about">
+      <div class="about-left">
+        <h1>About us</h1>
+        <p>Welcome to Concertify! We help people find out when their favorite musicians are playing concerts, by making it easy for you to see live music and find new musicians you might like.<br><br>
+            Our website is run by a team of people who love music and want to help others enjoy it too.<br><br>
+            You can search for concerts near you and keep track of them on our website. We hope you have fun using our website and discovering new music!</p>
+      </div>
+
+      <div class="about-right">
+        <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="concert image">
+      </div>
     </div>
 
   </div>

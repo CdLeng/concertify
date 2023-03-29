@@ -13,32 +13,38 @@
   <div class="artist-information">
     <div class="artist-description-show-container">
       <div class="artist-genres-show">
-        <% @artist.genres.each do |genre| %>
+        <% @artist.genres.first(6).each do |genre| %>
           <p class="artist-genre-list"><%= genre.name %></p>
         <% end %>
       </div>
 
       <div class="artist-description-show">
-
           <% if @artist.description %>
-            <p> <%= @artist.description %> </p>
+            <% description = @artist.description %>
+            <% cleaned_description = description.slice(0, description.index("<a")) %>
+            <p><%= cleaned_description %></p>
           <% end %>
+      </div>
+
+      <div class="artist-follow-show">
+        <%= button_to "Follow", {action: "create", :artist_id => @artist.id, :controller => "followed_artists", method: :post}, {class: "btn-accent"} %>
       </div>
 
     </div>
 
 
-    <div class="artist-follow-show">
-      <%= button_to "Follow", {action: "create", :artist_id => @artist.id, :controller => "followed_artists", method: :post}, {class: "btn-accent"} %>
-    </div>
+
 
   </div>
 
 
   <div class="artist-concerts-container">
-    <h3>NEXT CONCERTS</h3>
 
-
+    <% if @artist.concerts.empty? %>
+      <h3>No upcoming concerts...</h3>
+    <% else %>
+      <h3>NEXT CONCERTS</h3>
+    <% end %>
 
 
     <% @artist.concerts.each do |concert|   %>
@@ -51,8 +57,9 @@
 
         <div class="artist-show-card-body">
           <div class="x">
+            <strong><p class="event-title-show"><strong> </strong><%= concert.title %></p></strong>
             <p class="event-title-show"><strong> Location: </strong><%= concert.location %></p>
-            <p class="event-title-show"><strong> Info: </strong><%= concert.description %></p>
+            <p class="event-title-show"><strong> Address: </strong><%= concert.city %>, <%= concert.country %></p>
             <p class="event-title-show"><strong> Year: </strong><%= concert.date.strftime("%Y") %></p>
 
           </div>

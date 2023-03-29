@@ -50,11 +50,14 @@ puts "Creating concerts.."
   ticket_url = "https://concertify.app"
   concert = Concert.new
   concert.location = location.sample
+  concert.latitude = Faker::Address.latitude
+  concert.longitude = Faker::Address.longitude
   concert.description = description
   concert.price = price
   concert.ticket_url = ticket_url
   concert.date = date
   concert.artist = artist
+  concert.tm_id = Faker::Code.npi
   concert.save
 end
 

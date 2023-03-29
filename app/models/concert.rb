@@ -3,9 +3,7 @@ class Concert < ApplicationRecord
   has_many :saved_concerts, dependent: :destroy
   validates :location, presence: true
   validates :date, presence: true
-  validates :price, numericality: { greater_than: 0 }
+  validates :price, numericality: { greater_than: 0 }, allow_nil: true
   validates :description, length: { maximum: 5000 }
-
-  geocoded_by :location
-  after_validation :geocode, if: :will_save_change_to_location?
+  validates :tm_id, uniqueness: true
 end

@@ -17,8 +17,8 @@
 }
 
 .profile-img {
-  width: 150px;
-  height: 150px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   // border: 2px solid $color-accent;
   // border: 2px solid #202020;
@@ -427,4 +427,18 @@
 .cancel-btn:hover {
   background-color: rgb(165, 17, 17);
 
+}
+
+.spotify-btn {
+  background-color: #1DB954;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+}
+
+.profile-container .user-component .spotify-btn a {
+  background-color: #1DB954;
+  font-weight: 500;
+  color: white;
 }
