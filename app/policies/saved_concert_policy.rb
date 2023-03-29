@@ -6,6 +6,10 @@ class SavedConcertPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    user
+  end
+
+  def destroy?
+    user
   end
 end

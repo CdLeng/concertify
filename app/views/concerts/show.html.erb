@@ -45,8 +45,15 @@
           </div>
 
           <div class="box-save">
-            <%= button_to "Save this concert", {action: "create", :concert_id => @concert.id, :controller => "saved_concerts", method: :post} %>
+          <% if user_signed_in? %>
+            <% if @user_save %>
+              <%= button_to "Save this concert", {action: "create", :concert_id => @concert.id, :controller => "saved_concerts", method: :post} %>
+            <% else %>
+              <%= button_to "Unsave this concert", {:controller => :saved_concerts,
+              :action => 'destroy', :id => @concert.id }, :method => :delete, class: "btn-accent" %>
+            <% end %>
           </div>
+          <% end %>
 
         </div>
       </div>

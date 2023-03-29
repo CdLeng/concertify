@@ -11,9 +11,18 @@ class SavedConcertsController < ApplicationController
     authorize @saved_concert
 
     if @saved_concert.save!
-      redirect_to saved_concerts_path, notice: "This concert was succesfully saved."
+      redirect_to concert_path(@saved_concert), notice: "This concert was succesfully saved."
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @user = current_user
+    @concert = Concert.find(params[:id])
+    @saved_concert = SavedConcert.find_by(concert_id: @concert, user_id: current_user)
+    authorize @saved_concert
+    @saved_concert.destroy
+    redirect_to concert_path(@concert), notice: "This concert is no longer saved."
   end
 end
