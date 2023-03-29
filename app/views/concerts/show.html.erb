@@ -27,7 +27,7 @@
 
       <div class="description mb-5">
         <div class="box-left">
-          <% last_space_index = @concert.artist.description.slice(0, 160).rindex(" ") %>
+          <% last_space_index = @concert.artist.description.slice(0, 360).rindex(" ") %>
           <p><strong style="color: #39AEA9">ABOUT: </strong><%= @concert.artist.description.slice(0, last_space_index) ... %></p>
           <p><strong style="color: #39AEA9">WHERE: </strong><%= @concert.location %></p>
           <p><strong style="color: #39AEA9">WHEN: </strong><%= @concert.date.strftime("%d %B %Y") %></p>
