@@ -89,7 +89,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 30px;
   margin-bottom: 200px;
 
   .home-links a {
@@ -102,10 +102,10 @@
     color: $color-accent;
     border: 1px solid $color-accent;
     border-radius: 10px;
-    padding: 70px 70px;
+    padding: 40px;
     transition: all ease-in-out 0.25s;
     font-size: 30px;
-    width: 300px;
+    width: 400px;
     height: 200px;
     display: flex;
     align-items: center;
@@ -129,6 +129,7 @@
   margin-top: 200px;
   background-color: #161616;
   gap: 20px;
+  border-radius: 5px;
 
 
   h1 {
