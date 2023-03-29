@@ -89,6 +89,7 @@
       border-radius: 20px;
       padding: 5px 20px;
       font-size: 14px;
+
     }
     a:hover {
       background-color: rgb(30, 134, 134);
@@ -413,10 +414,10 @@
 
 .cancel-btn {
   background-color: rgb(184, 65, 65);
-  padding: 5px 20px;
+  padding: 10px 30px;
   font-size: 16px;
   border-radius: 30px;
-  margin: 50px 0px;
+  margin: 150px 0px;
   border: 0px;
   color: white;
   a {
@@ -434,11 +435,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 15px;
+  border-radius: 30px;
+  padding: 3px 10px;
+
+
+  // padding: 5px 20px;
+  font-size: 14px;
 }
 
 .profile-container .user-component .spotify-btn a {
-  background-color: #1DB954;
+  background-color: transparent;
+  padding-left: 20px;
   font-weight: 500;
   color: white;
+  padding: 0;
+}
+.spotify-btn:hover {
+  background-color: #158e3f;
+
 }
