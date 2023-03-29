@@ -19,11 +19,16 @@ class ConcertsController < ApplicationController
     user = current_user
     @followed_artists = user.followed_artists
     @followed_concerts = []
+
+
     @followed_artists.each do |fa|
-      fa.artist.concerts.each do |ct|
-        @followed_concerts.push(ct)
+      if fa.artist.concerts.count>0
+        @followed_concerts.push(fa.artist.concerts.last)
+
       end
+
     end
+
     @filtered_concerts = @followed_concerts.sample(8)
 
     @markers = @filtered_concerts.map do |concert|
@@ -33,5 +38,6 @@ class ConcertsController < ApplicationController
         info_window_html: render_to_string(partial: "popup", locals: {concert: concert})
       }
     end
+
   end
 end
