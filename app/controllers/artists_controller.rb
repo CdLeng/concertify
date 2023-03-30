@@ -21,7 +21,9 @@ class ArtistsController < ApplicationController
     end
     @artist = Artist.find(params[:id])
     authorize @artist
-    return_concerts(@artist)
+    if @artist.concerts.count.zero?
+      return_concerts(@artist)
+    end
   end
 
   def create
