@@ -73,11 +73,8 @@
           </div>
           <div class="z">
             <%= link_to "More info", concert_path(concert), class: "btn-accent" %>
-
-            <%= button_to "Save", {action: "create", :concert_id => concert.id, :controller => "saved_concerts", method: :post}, {class: "btn-accent "} %>
-
-
-
+            <%= button_to "Save", {action: "create", :concert_id => concert.id, :controller => "saved_concerts", method: :post}, {class: "btn-accent-save
+            "} %>
           </div>
         </div>
       </div>
