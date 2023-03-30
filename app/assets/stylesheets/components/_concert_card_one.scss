@@ -21,6 +21,13 @@
     position: relative;
   }
 
+  .unsave-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 30%;
+  }
+
   .card-img > img {
     width: 100%;
     height: 180px;
