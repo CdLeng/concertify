@@ -28,6 +28,7 @@
       <div class="description mb-5">
         <div class="box-left">
           <% last_space_index = @concert.artist.description.slice(0, 360).rindex(" ") %>
+          <p><strong style="color: #39AEA9; font-size: 20px"><%= @concert.title %></strong></p>
           <p><strong style="color: #39AEA9"></strong><%= @concert.artist.description.slice(0, last_space_index) ... %></p>
           <p><strong style="color: #39AEA9"><i class="fa-solid fa-location-dot"></i> </strong><%= @concert.location %> <strong style="color: #39AEA9; padding-left: 30px"><i class="fa-solid fa-calendar-days"></i></strong><%= @concert.date.strftime("%d %B %Y") %></p>
 
@@ -40,20 +41,26 @@
             <% end %>
          </div>
 
+          <div class="box-save">
+          <% if user_signed_in? %>
+            <% if @user_save %>
+              <%= button_to "Save this concert", {action: "create", :concert_id => @concert.id, :controller => "saved_concerts", method: :post} %>
+            <% else %>
+              <%= button_to "Unsave this concert", {:controller => :saved_concerts,
+              :action => 'destroy', :id => @concert.id }, :method => :delete, class: "btn-accent" %>
+            <% end %>
+          </div>
+          <% end %>
+
           <div class="box-buy">
             <%= link_to "Buy ticket", @concert.ticket_url, target: "_blank"%>
-          </div>
-
-          <div class="box-save">
-            <%= button_to "Save this concert", {action: "create", :concert_id => @concert.id, :controller => "saved_concerts", method: :post} %>
           </div>
 
         </div>
       </div>
 
   </div>
-
-    <div class="back-btn">
+    <div class="back-btn-3">
     <%= link_to "Go back", root_path, class: "btn btn-accent" %>
   </div>
 </div>

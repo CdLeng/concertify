@@ -178,8 +178,19 @@
         width: fit-content;
         margin-left: 10px;
       }
-      .btn-accent:hover {
-        color: white;
+
+      .btn-accent-save {
+        border: none;
+        background-color: #f0e880;
+        padding: 3px 30px;
+        border-radius: 20px;
+        width: fit-content;
+        margin-left: 10px;
+      }
+      .btn-accent-save:hover {
+        transition: box-shadow 0.4s;
+        background-color: #e0d85d;
+        box-shadow: 0 0 2.5px #e0d85d, 0 0 5px #e0d85d, 0 0 7.5px #e0d85d, 0 0 10px #e0d85d;
       }
       .save {
         background-color: rgb(247, 226, 107);
@@ -204,6 +215,7 @@
 
  .artist-concert-card-container:hover {
   box-shadow: 0px 0px 30px #39aea85d;
+  transition: box-shadow 0.4s;
  }
 
 
