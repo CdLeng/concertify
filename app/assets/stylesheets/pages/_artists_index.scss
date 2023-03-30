@@ -9,7 +9,7 @@
 
 
 .layout-artists-container {
-  background-color: #292929;
+  background-color: #161616;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -189,9 +189,16 @@
 
 }
 .back-btn {
-  background-color: #292929;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 100px;
+  padding-top: 300px;
+  background-color: #161616;
+
+
+
+  a {
+    width: 150px;
+    margin-bottom: 150px;
+  }
 }

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 
 .layout-container {
-  background-color: #292929;
+  background-color: #161616;
   padding: 0px 200px;
 }
 
@@ -17,7 +17,7 @@
     height: 350px;
 
     p {
-      font-size: 40px;
+      font-size: 50px;
       color: #a0e9e5;
       color: whitesmoke;
       font-family: 'Bebas Neue', cursive;
@@ -29,9 +29,11 @@
     text-decoration: none;
     color: #39AEA9;
     color: #4fccc6;
-    font-size: 100px;
+    font-size: 130px;
     font-weight: bold;
     font-family: 'Anton', sans-serif;
+    font-family: 'Bebas Neue', cursive;
+
     transition: all ease-in-out 0.3s;
   }
   h2 > a:hover {
@@ -43,18 +45,17 @@
     transition: all ease-in-out 0.4s;
 
   }
-  h2:hover {
-    transform: scale(1.01);
-
-  }
 }
 
 .concert-body {
   width: 100%;
   background-color: #393939;
+  background-color: #202020;
   color: white;
   border-radius: 20px;
   box-shadow: 0px 0px 30px rgba(26, 26, 26, 0.432);
+  transition: all ease-in-out 0.3s;
+
 
   .img-map {
     display: flex;
@@ -73,19 +74,25 @@
   }
 
   .description {
-    padding: 50px;
+    padding: 30px 50px 50px 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     .box-left {
-      border-left: 2px solid #39AEA9;
-      padding: 10px;
+      // border-left: 2px solid #39AEA9;
+      // padding: 10px;
+      padding-right: 30px;
       height: 240px;
       display: flex;
       flex-direction: column;
       justify-content: space-around;
-      align-items:flex-start
+      align-items:flex-start;
+
+      i {
+        font-size: 20px;
+        padding-right: 5px;
+      }
     }
 
     .box-right {
@@ -94,6 +101,7 @@
       justify-content: center;
       align-items: center;
       margin-right: 20px;
+      margin-top: 5px;
 
     }
 
@@ -155,4 +163,8 @@
   //   align-items: center;
   //   padding: 50px;
   // }
+}
+.concert-body:hover {
+  box-shadow: 0px 0px 30px rgba(46, 163, 161, 0.522);
+
 }

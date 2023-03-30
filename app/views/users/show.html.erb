@@ -45,18 +45,16 @@
         <p class="title-1" ><%= link_to "Saved Concerts", saved_concerts_path %></p>
         <div class="sub-container">
           <% @saved_concerts.each do |concert|   %>
-            <div class="concert-profile-card">
-                <%# <img src="https://media.istockphoto.com/id/1193274679/photo/excited-crowd-on-a-rock-concert.jpg?s=612x612&w=0&k=20&c=330XDxllhunHf5dt_IwMO2yxPBjXb5j_WMkf_0oWBmU=" alt="concert image"> %>
-              <div class="dt">
-                <h4><%= concert.concert.date.strftime("%d") %></h4>
-                <p><%= concert.concert.date.strftime("%B") %></p>
-              </div>
-              <div class="art">
-                <p><%= link_to concert.concert.artist.name, concert_path(concert.concert) %></p>
-              </div>
-
-
-            </div>
+            <%= link_to concert_path(concert.concert), class: "concert-profile-card" do %>
+                  <%# <img src="https://media.istockphoto.com/id/1193274679/photo/excited-crowd-on-a-rock-concert.jpg?s=612x612&w=0&k=20&c=330XDxllhunHf5dt_IwMO2yxPBjXb5j_WMkf_0oWBmU=" alt="concert image"> %>
+                <div class="dt">
+                  <h4><%= concert.concert.date.strftime("%d") %></h4>
+                  <p><%= concert.concert.date.strftime("%B") %></p>
+                </div>
+                <div class="art">
+                  <p><%= concert.concert.artist.name %></p>
+                </div>
+            <% end %>
           <% end %>
         </div>
       <% end %>
@@ -64,20 +62,24 @@
     </div>
 
     <div class="artists-component">
-      <p class="title-1" ><%= link_to "Favourite Artists", followed_artists_path %></p>
+      <% if @followed_artists.empty? %>
+        <p>You are not following any artists.</p>
+      <% else %>
+        <p class="title-1" ><%= link_to "Favourite Artists", followed_artists_path %></p>
 
-      <div class="sub-container">
-        <% @followed_artists.each do |artist|   %>
-          <div class="artist-card-profile">
-            <% if artist.artist.image_url %>
-              <img src="<%= artist.artist.image_url %>" alt="Artist image">
-            <% else %>
-              <img src="https://images.unsplash.com/photo-1605722243979-fe0be8158232?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80" alt="Artist placeholder image">
+        <div class="sub-container">
+          <% @followed_artists.each do |artist|   %>
+            <%= link_to artist_path(artist.artist), class: "artist-card-profile" do%>
+                <% if artist.artist.image_url %>
+                  <%= image_tag(artist.artist.image_url, alt: "Artist image") %>
+                <% else %>
+                  <img src="https://images.unsplash.com/photo-1605722243979-fe0be8158232?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80" alt="Artist placeholder image">
+                <% end %>
+              <p><%= artist.artist.name %></p>
             <% end %>
-           <p><%= link_to "#{artist.artist.name}", artist_path(artist.artist)%></p>
-          </div>
-        <% end %>
-      </div>
+          <% end %>
+        </div>
+      <% end %>
     </div>
 
 

@@ -2,7 +2,7 @@
   <div class="show-concert-container">
     <div class="concert-title">
       <h2><%= link_to @concert.artist.name.upcase, artist_path(@concert.artist) %></h2>
-      <p>Concert on the <u><%= @concert.date.strftime("%d %B %Y") %></u></p>
+      <p> <%= @concert.date.strftime("%d %B %Y") %></p>
     </div>
 
 
@@ -28,14 +28,14 @@
       <div class="description mb-5">
         <div class="box-left">
           <% last_space_index = @concert.artist.description.slice(0, 360).rindex(" ") %>
-          <p><strong style="color: #39AEA9">TITLE: </strong><%= @concert.title %></p>
-          <p><strong style="color: #39AEA9">ABOUT: </strong><%= @concert.artist.description.slice(0, last_space_index) ... %></p>
-          <p><strong style="color: #39AEA9">WHERE: </strong><%= @concert.location %></p>
-          <p><strong style="color: #39AEA9">WHEN: </strong><%= @concert.date.strftime("%d %B %Y") %></p>
+          <p><strong style="color: #39AEA9; font-size: 20px"><%= @concert.title %></strong></p>
+          <p><strong style="color: #39AEA9"></strong><%= @concert.artist.description.slice(0, last_space_index) ... %></p>
+          <p><strong style="color: #39AEA9"><i class="fa-solid fa-location-dot"></i> </strong><%= @concert.location %> <strong style="color: #39AEA9; padding-left: 30px"><i class="fa-solid fa-calendar-days"></i></strong><%= @concert.date.strftime("%d %B %Y") %></p>
+
         </div>
         <div class="box-right">
           <div class="box-price">
-            <p><strong style="color: #39AEA9">PRICE FROM</strong></p>
+            <p><strong style="color: #39AEA9">STARTING AT</strong></p>
             <% if @concert.price %>
               <p class="price"><%= @concert.price.floor %>€</p>
             <% end %>
@@ -46,15 +46,23 @@
           </div>
 
           <div class="box-save">
-            <%= button_to "Save this concert", {action: "create", :concert_id => @concert.id, :controller => "saved_concerts", method: :post} %>
+          <% if user_signed_in? %>
+            <% if @user_save %>
+              <%= button_to "Save this concert", {action: "create", :concert_id => @concert.id, :controller => "saved_concerts", method: :post} %>
+            <% else %>
+              <%= button_to "Unsave this concert", {:controller => :saved_concerts,
+              :action => 'destroy', :id => @concert.id }, :method => :delete, class: "btn-accent" %>
+            <% end %>
           </div>
+          <% end %>
 
         </div>
       </div>
 
   </div>
 
-  <div>
+    <div class="back-btn">
+    <%= link_to "Go back", root_path, class: "btn btn-accent" %>
   </div>
 </div>
 
