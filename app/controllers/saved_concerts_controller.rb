@@ -23,6 +23,11 @@ class SavedConcertsController < ApplicationController
     @saved_concert = SavedConcert.find_by(concert_id: @concert, user_id: current_user)
     authorize @saved_concert
     @saved_concert.destroy
-    redirect_to concert_path(@concert), notice: "This concert is no longer saved."
+    source = params[:source]
+    if source
+      redirect_to saved_concerts_path, notice: "This concert is no longer on your saved concerts."
+    else
+      redirect_to concert_path(@concert), notice: "This concert is no longer saved."
+    end
   end
 end

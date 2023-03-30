@@ -16,6 +16,8 @@
             <img src="https://media.istockphoto.com/id/1193274679/photo/excited-crowd-on-a-rock-concert.jpg?s=612x612&w=0&k=20&c=330XDxllhunHf5dt_IwMO2yxPBjXb5j_WMkf_0oWBmU=" alt="concert image">
           <% end %>
           <p class="img-date"><%= concert.concert.date %></p>
+          <%= button_to "Unsave", {:controller => :saved_concerts,
+              :action => 'destroy', :id => concert.concert.id, :source => :saved_concerts }, :method => :delete, class: "btn-accent unsave-btn" %>
         </div>
         <div class="card-body">
           <div class="d-flex justify-content-between align-items-center">
