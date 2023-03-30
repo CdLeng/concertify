@@ -162,6 +162,7 @@
   }
 
 }
+
 .artist-card-btn {
   position: absolute;
   right: 10px;
@@ -187,6 +188,7 @@
   }
 
 }
+
 .back-btn {
   display: flex;
   justify-content: center;
@@ -199,5 +201,43 @@
   a {
     width: 150px;
     margin-bottom: 150px;
+  }
+}
+
+.back-btn-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  margin-bottom: 100px;
+
+  a {
+    width: 150px;
+  }
+}
+
+.back-btn-3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  background-color: #161616;
+
+  a {
+    width: 150px;
+  }
+}
+
+.back-btn-4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: #161616;
+
+  a {
+    width: 150px;
   }
 }
