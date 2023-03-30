@@ -25,16 +25,17 @@ class ConcertsController < ApplicationController
     @followed_artists = user.followed_artists
     @followed_concerts = []
 
-
     @followed_artists.each do |fa|
       if fa.artist.concerts.count>0
         @followed_concerts.push(fa.artist.concerts.last)
-
       end
-
     end
 
-    @filtered_concerts = @followed_concerts.sample(8)
+    @filtered_concerts = Concert.near("#{user.address}, #{user.city}, #{user.country_code}", 200)
+
+    concerts_by_artist = @filtered_concerts.group_by(&:artist)
+    @one_concert_per_artist = concerts_by_artist.map { |artist, concerts| concerts.last }
+
 
     @markers = @filtered_concerts.map do |concert|
       {
