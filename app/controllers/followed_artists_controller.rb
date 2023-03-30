@@ -24,6 +24,11 @@ class FollowedArtistsController < ApplicationController
     @followed_artist = FollowedArtist.find_by(artist_id: @artist, user_id: current_user)
     authorize @followed_artist
     @followed_artist.destroy
-    redirect_to artist_path(@artist), notice: "Your no longer following this artist."
+    source = params[:source]
+    if source
+      redirect_to followed_artists_path, notice: "You are no longer following #{@artist.name}."
+    else
+      redirect_to artist_path(@artist), notice: "You are no longer following #{@artist.name}."
+    end
   end
 end

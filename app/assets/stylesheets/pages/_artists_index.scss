@@ -22,7 +22,6 @@
   grid-template-columns: 500px 500px;
   gap: 30px;
   padding: 30px;
-  background-color: $color-darker;
   margin: 0px 0px;
   border-radius: 10px;
 }
@@ -95,7 +94,7 @@
 .artist-card-img  {
   background-color: lightcoral;
   width: 200px;
-  height: 150px;
+  height: 100%;
   border-radius: 10px;
   margin-right: 15px;
 

@@ -28,6 +28,7 @@
       <div class="description mb-5">
         <div class="box-left">
           <% last_space_index = @concert.artist.description.slice(0, 360).rindex(" ") %>
+          <p><strong style="color: #39AEA9; font-size: 20px"><%= @concert.title %></strong></p>
           <p><strong style="color: #39AEA9"></strong><%= @concert.artist.description.slice(0, last_space_index) ... %></p>
           <p><strong style="color: #39AEA9"><i class="fa-solid fa-location-dot"></i> </strong><%= @concert.location %> <strong style="color: #39AEA9; padding-left: 30px"><i class="fa-solid fa-calendar-days"></i></strong><%= @concert.date.strftime("%d %B %Y") %></p>
 
@@ -40,10 +41,6 @@
             <% end %>
          </div>
 
-          <div class="box-buy">
-            <%= link_to "Buy ticket", @concert.ticket_url, target: "_blank"%>
-          </div>
-
           <div class="box-save">
           <% if user_signed_in? %>
             <% if @user_save %>
@@ -54,6 +51,10 @@
             <% end %>
           </div>
           <% end %>
+
+          <div class="box-buy">
+            <%= link_to "Buy ticket", @concert.ticket_url, target: "_blank"%>
+          </div>
 
         </div>
       </div>
