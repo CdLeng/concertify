@@ -41,10 +41,6 @@
             <% end %>
          </div>
 
-          <div class="box-buy">
-            <%= link_to "Buy ticket", @concert.ticket_url, target: "_blank"%>
-          </div>
-
           <div class="box-save">
           <% if user_signed_in? %>
             <% if @user_save %>
@@ -55,6 +51,10 @@
             <% end %>
           </div>
           <% end %>
+
+          <div class="box-buy">
+            <%= link_to "Buy ticket", @concert.ticket_url, target: "_blank"%>
+          </div>
 
         </div>
       </div>
