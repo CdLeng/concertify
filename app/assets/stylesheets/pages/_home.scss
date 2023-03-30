@@ -44,20 +44,21 @@
 
 .second-banner {
   width: 100%;
-  min-height: 170vh;
+  min-height: 110vh;
   background-color: #0D0D0D;
   position: relative;
-  padding: 150px;
+  padding: 110px;
   padding-top: 230px;
 
 
   .home-concerts {
-    width: 100%;
+    padding-top: 100px;
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     row-gap: 0px;
     column-gap: 50px;
+    padding: 0px 100px;
   }
   .home-subtitle {
     color: whitesmoke;
@@ -84,22 +85,80 @@
 }
 
 .home-links {
-  margin-top: 100px;
+  margin-top: 0px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
-  padding: 0px 200px;
+  gap: 30px;
+  margin-bottom: 200px;
+
+  .home-links a {
+    display: flex;
+    align-items: center;
+  }
+
   .btn-ghost {
     background-color: #0D0D0D;
     color: $color-accent;
     border: 1px solid $color-accent;
-    border-radius: 20px;
-    padding: 5px 30px;
+    border-radius: 10px;
+    padding: 40px;
     transition: all ease-in-out 0.25s;
+    font-size: 30px;
+    width: 400px;
+    height: 200px;
+    display: flex;
+    align-items: center;
   }
   .btn-ghost:hover {
     background-color: $color-accent;
     color: #0D0D0D ;
     box-shadow: 0px 0px 40px rgba(25, 156, 173, 0.438);
+  }
+}
+
+.s {
+  color: whitesmoke;
+  font-size: 20px;
+}
+
+.banner-about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 200px;
+  background-color: #161616;
+  gap: 20px;
+  border-radius: 5px;
+
+
+  h1 {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+
+  p {
+    color: white;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .about-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
+  }
+
+  .about-right {
+    img {
+      width: 500px;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 5px;
+    }
   }
 }

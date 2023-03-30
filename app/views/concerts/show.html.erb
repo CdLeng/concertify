@@ -1,39 +1,62 @@
 <div class="layout-container">
-
   <div class="show-concert-container">
     <div class="concert-title">
       <h2><%= link_to @concert.artist.name.upcase, artist_path(@concert.artist) %></h2>
-      <p>Concert in <u><%= @concert.date.strftime("%B %Y") %></u></p>
+      <p> <%= @concert.date.strftime("%d %B %Y") %></p>
     </div>
+
+
+
     <div class="concert-body">
-      <img src="https://cdn.vysokeskoly.cz/czech-universities/uploads/2020/01/3380.jpg" alt="concert photo">
-      <div class="description">
+      <div class="img-map">
+        <% if @concert.image_url.present? %>
+          <img src="<%= @concert.artist.image_url %>" alt="Concert image">
+        <% else %>
+          <img src="https://cdn.vysokeskoly.cz/czech-universities/uploads/2020/01/3380.jpg" alt="concert photo">
+        <% end %>
+
+                                <div class="map-box"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+        id='map'
+        style='width: 50%; height: 300px;  border-top-right-radius: 20px;'></div>
+
+
+      </div>
+
+      <div class="description mb-5">
         <div class="box-left">
-          <p><strong style="color: #39AEA9">ABOUT: </strong><%= @concert.description %></p>
-          <p><strong style="color: #39AEA9">WHERE: </strong><%= @concert.location %></p>
-          <p><strong style="color: #39AEA9">WHEN: </strong><%= @concert.date %></p>
+          <% last_space_index = @concert.artist.description.slice(0, 360).rindex(" ") %>
+          <p><strong style="color: #39AEA9"></strong><%= @concert.artist.description.slice(0, last_space_index) ... %></p>
+          <p><strong style="color: #39AEA9"><i class="fa-solid fa-location-dot"></i> </strong><%= @concert.location %> <strong style="color: #39AEA9; padding-left: 30px"><i class="fa-solid fa-calendar-days"></i></strong><%= @concert.date.strftime("%d %B %Y") %></p>
+
         </div>
         <div class="box-right">
           <div class="box-price">
-            <p><strong style="color: #39AEA9">PRICE FROM</strong></p>
-            <p class="price"><%= @concert.price.floor %>€</p>
+            <p><strong style="color: #39AEA9">STARTING AT</strong></p>
+            <% if @concert.price %>
+              <p class="price"><%= @concert.price.floor %>€</p>
+            <% end %>
          </div>
 
           <div class="box-buy">
-            <%= link_to "Buy ticket", @concert.ticket_url%>
+            <%= link_to "Buy ticket", @concert.ticket_url, target: "_blank"%>
           </div>
 
           <div class="box-save">
-          <%= button_to "Save this concert", {action: "create", :concert_id => @concert.id, :controller => "saved_concerts", method: :post} %>
+            <%= button_to "Save this concert", {action: "create", :concert_id => @concert.id, :controller => "saved_concerts", method: :post} %>
           </div>
-
 
         </div>
       </div>
-    </div>
+
   </div>
 
-  <div>
-    <%= link_to "Go back", root_path, class: "btn btn-light my-5" %>
+    <div class="back-btn">
+    <%= link_to "Go back", root_path, class: "btn btn-accent" %>
   </div>
 </div>
+
+
+<%# Concert.near([40.71, 100.23], 20)  Concerts near certain point, with a 20 km  radius %>
