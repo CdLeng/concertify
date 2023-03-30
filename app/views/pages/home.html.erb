@@ -4,7 +4,11 @@
 
 
 
-      <h1 class="text-center neon-Text">DOn't miss out on any concerts!</h1>
+      <h1 class="text-center neon-Text">Don't miss out on any concerts!</h1>
+      <div class="typed d-flex justify-content-center my-5">
+        <h3 class="mx-2">Track concerts from </h3>
+        <h3 class="typed-artist" data-controller="typed" data-typed-artists-value="<%= @artist_array %>" data-typed-target="typed"></h3>
+      </div>
       <%= form_with url: artists_path, method: :get, class: "d-flex search-form-border my-5" do %>
       <%= text_field_tag :query,
         params[:query],
