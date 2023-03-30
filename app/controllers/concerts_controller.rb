@@ -2,6 +2,11 @@ class ConcertsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show]
 
   def show
+    @user = current_user
+    if @user
+      @user_saved = @user.saved_concerts
+      @user_save = @user_saved.find_by(concert_id: params[:id], user_id: @user).nil?
+    end
     @concert = Concert.find(params[:id])
 
     authorize @concert
