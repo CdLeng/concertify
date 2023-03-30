@@ -14,6 +14,11 @@ class ArtistsController < ApplicationController
   end
 
   def show
+    @user = current_user
+    if @user
+      @user_followed = @user.followed_artists
+      @user_following = @user_followed.find_by(artist_id: params[:id], user_id: current_user).nil?
+    end
     @artist = Artist.find(params[:id])
     authorize @artist
     return_concerts(@artist)
