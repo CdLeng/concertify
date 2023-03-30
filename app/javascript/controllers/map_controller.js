@@ -12,7 +12,8 @@ export default class extends Controller {
     mapboxgl.accessToken = this.apiKeyValue;
     this.map = new mapboxgl.Map({
       container: this.element, // container ID
-      style: 'mapbox://styles/carolinavmo/clfo2eda600e101qiadzfb9l2', // style URL
+      // style: 'mapbox://styles/carolinavmo/clfo2eda600e101qiadzfb9l2', // style URL
+      style: 'mapbox://styles/carolinavmo/clftu5tg8002801oguxae7r1v', // style URL
     });
 
     this.#addMarkersToMap()
