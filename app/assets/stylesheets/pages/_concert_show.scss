@@ -74,7 +74,7 @@
   }
 
   .description {
-    padding: 50px;
+    padding: 30px 50px 50px 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -139,7 +139,7 @@
       font-weight: bold;
     }
     .box-save {
-      background-color: rgb(223, 109, 109);
+      background-color: #4fccc6;
       // border: 2px solid  rgb(223, 109, 109);
       button {
         background-color: transparent;
