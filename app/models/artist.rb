@@ -1,6 +1,6 @@
 class Artist < ApplicationRecord
   has_many :concerts
-  has_many :artist_genres
+  has_many :artist_genres, dependent: :destroy
   has_many :genres, through: :artist_genres
   has_many :concerts, dependent: :destroy
   has_many :followed_artist, dependent: :destroy
