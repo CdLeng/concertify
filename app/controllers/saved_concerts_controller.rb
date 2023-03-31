@@ -11,7 +11,7 @@ class SavedConcertsController < ApplicationController
     authorize @saved_concert
 
     if @saved_concert.save!
-      redirect_to concert_path(@saved_concert), notice: "This concert was succesfully saved."
+      redirect_to concert_path(@saved_concert.concert), notice: "This concert was succesfully saved."
     else
       render :new, status: :unprocessable_entity
     end
